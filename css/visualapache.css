@@ -1,0 +1,221 @@
+/*
+
+  This file is part of 'web-app-visual-apache'.
+
+  Copyright 2012 Sergio Lindo - <sergiolindo.empresa@gmail.com>
+
+  'web-app-visual-apache' is free software: you can redistribute it and/or
+  modify it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or (at your
+  option) any later version.
+
+  'web-app-visual-apache' is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+  Public License for more details.
+
+  You should have received a copy of the GNU General Public License along with
+  'web-app-visual-apache'. If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
+
+
+/* ==========================================================================
+	General
+   ========================================================================== */
+
+* {
+	color:white;
+	cursor:default;
+	font-size:1em;
+	margin:0px;
+	padding:0px;
+	text-shadow:1em 1em 1em black;
+}
+
+body {
+	background-color:#003050;
+}
+
+h1 {
+	font-size:1.1em;
+}
+
+
+
+/* ==========================================================================
+	Menu bar
+   ========================================================================== */
+
+nav.menuBar {
+	background:rgba(0,0,0, .5);
+	border:.13em solid white;
+	border-radius:1.4em;
+	box-shadow:1em 1em 3em black;
+	clear:both;
+	display:inline-block;
+	margin:.1em;
+	padding:.1em 1.2em;
+}
+
+nav.menuBar a {
+	display:inline-block;
+	margin:0.2em;
+	text-align:center;
+}
+
+nav.menuBar a * {
+	display:block;
+}
+
+nav.menuBar a img {
+	height:44px;
+	margin: auto;
+	transition:background 1s;
+	-moz-transition:background 1s;
+	-o-transition:background 1s;
+	-webkit-transition:background 1s;
+	width:44px;
+}
+
+nav.menuBar a:hover img {
+	background:rgba(255,255,255,.5);
+}
+
+
+
+/* ==========================================================================
+	Box model
+   ========================================================================== */
+
+section.boxModel {
+	background-image: linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
+	background-image: -moz-linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
+	background-image: -ms-linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(0,80,112)), color-stop(0.37, rgb(0,0,0)), color-stop(0.8, rgb(0,96,128)));
+	background-image: -webkit-linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
+	background-image: -o-linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
+	border:.13em solid white;
+	border-radius:1.4em;
+	box-shadow:1em 1em 3em black;
+	display:inline-block;
+	margin:.1em;
+	padding:.1em 1.2em;
+}
+
+section.boxModel table {
+	background:rgba(0,255,255, .1);
+	border-collapse:collapse;
+	box-shadow:1em 1em 3em black;
+	margin-bottom:.3em;
+}
+
+section.boxModel th, section.boxModel td {
+	margin-bottom:1em;
+	padding:0px 0.5em;
+	text-align:left;
+}
+
+
+
+/* ==========================================================================
+	Buttons
+   ========================================================================== */
+
+button.blue, button.red, button.green {
+	border: 1px solid gainsboro;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: inset 0 1px 2px rgb a(0,0,0,0.3);
+	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	padding: .2em .4em;
+}
+
+button.blue {
+	background-color: #4D90FE;
+	background-image: linear-gradient(top,#4D90FE,#4787ED);
+	background-image: -moz-linear-gradient(top,#4D90FE,#4787ED);
+	background-image: -ms-linear-gradient(top,#4D90FE,#4787ED);
+	background-image: -o-linear-gradient(top,#4D90FE,#4787ED);
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#4D90FE),to(#4787ED));
+	background-image: -webkit-linear-gradient(top,#4D90FE,#4787ED);
+	border: 1px solid #3079ED;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
+button.blue:hover {
+	background-color: #357AE8;
+	background-image: linear-gradient(top,#4D90FE,#357AE8);
+	background-image: -moz-linear-gradient(top,#4D90FE,#357AE8);
+	background-image: -ms-linear-gradient(top,#4D90FE,#357AE8);
+	background-image: -o-linear-gradient(top,#4D90FE,#357AE8);
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#4D90FE),to(#357AE8));
+	background-image: -webkit-linear-gradient(top,#4D90FE,#357AE8);
+	border: 1px solid #2F5BB7;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+}
+
+button.red {
+	background-color: #D14836;
+	background-image: linear-gradient(top,#DD4B39,#D14836);
+	background-image: -moz-linear-gradient(top,#DD4B39,#D14836);
+	background-image: -ms-linear-gradient(top,#DD4B39,#D14836);
+	background-image: -o-linear-gradient(top,#DD4B39,#D14836);
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#DD4B39),to(#D14836));
+	background-image: -webkit-linear-gradient(top,#DD4B39,#D14836);
+	border: 1px solid #C13826;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
+button.red:hover {
+	background-color: #C13826;
+	background-image: linear-gradient(top,#DD4B39,#C13826);
+	background-image: -moz-linear-gradient(top,#DD4B39,#C13826);
+	background-image: -ms-linear-gradient(top,#DD4B39,#C13826);
+	background-image: -o-linear-gradient(top,#DD4B39,#C13826);
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#DD4B39),to(#C13826));
+	background-image: -webkit-linear-gradient(top,#DD4B39,#C13826);
+	border: 1px solid #B12816;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+}
+
+button.green {
+	background-color: #00AE40;
+	background-image: linear-gradient(top,#0DBE50,#00AE40);
+	background-image: -moz-linear-gradient(top,#0DBE50,#00AE40);
+	background-image: -ms-linear-gradient(top,#0DBE50,#00AE40);
+	background-image: -o-linear-gradient(top,#0DBE50,#00AE40);
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#0DBE50),to(#00AE40));
+	background-image: -webkit-linear-gradient(top,#0DBE50,#00AE40);
+	border: 1px solid #007E10;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
+button.green:hover {
+	background-color: #009E30;
+	background-image: linear-gradient(top,#0DBE50,#009E30);
+	background-image: -moz-linear-gradient(top,#0DBE50,#009E30);
+	background-image: -ms-linear-gradient(top,#0DBE50,#009E30);
+	background-image: -o-linear-gradient(top,#0DBE50,#009E30);
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#0DBE50),to(#009E30));
+	background-image: -webkit-linear-gradient(top,#0DBE50,#009E30);
+	border: 1px solid #006E00;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/* ==========================================================================
+
+	Individual style
+
+   ========================================================================== */
+
+#tableNewHost th, #tableNewHost td {
+	padding:.4em .5em;
+	white-space: nowrap;
+}
+

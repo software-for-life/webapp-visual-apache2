@@ -1,0 +1,166 @@
+<!--
+
+  This file is part of 'web-app-visual-apache'.
+
+  Copyright 2012 Sergio Lindo - <sergiolindo.empresa@gmail.com>
+
+  'web-app-visual-apache' is free software: you can redistribute it and/or
+  modify it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or (at your
+  option) any later version.
+
+  'web-app-visual-apache' is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+  Public License for more details.
+
+  You should have received a copy of the GNU General Public License along with
+  'web-app-visual-apache'. If not, see <http://www.gnu.org/licenses/>.
+
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>VisualApache - {{Interfaz gráfica para la configuración de apache.}}</title>
+
+	<!-- REMOVE WHEN FINISHED -->
+	<base href="http://test.com/ironMan/">
+	<!-- REMOVE WHEN FINISHED -->
+
+	<link rel="stylesheet" href="css/normalize.css" />
+	<link rel="stylesheet" href="css/visualapache.css" />
+
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/visualapache.js"></script>
+</head>
+<body>
+
+	<!-- Menu bar -->
+	<nav class="menuBar">
+
+		<h1>{{Barra de menú}}</h1>
+		<a id="aHosts" class="menuItem" href="#" title="{{Muestra la configuración de los hosts virtuales.}}">
+			<img src="img/iconHostOff.png"/>
+			{{Hosts}}
+		</a>
+
+		<a id="aMods" class="menuItem" href="#">
+			<img src="img/iconModOn.png"/>
+			<span>{{Módulos}}</span>
+		</a>
+
+	</nav><!-- END OF Menu bar -->
+	<br/>
+
+
+
+	<!-- Hosts configuration -->
+	<section id="sectionHosts" class="boxModel">
+
+		<header>
+			<h1>{{Configuración de hosts virtuales}}</h1>
+		</header>
+
+		<table id="tableHostList" class="hostList">
+			<!-- This example will be removed -->
+			<tr>
+				<td>www.name.com</td>
+				<td>80</td>
+				<td>
+					<button id="btnEnableHost" class="blue">{{Activar}}</button>
+				</td>
+				<td>
+					<button id="btnDisableHost" class="red">
+						{{Desactivar}}
+					</button>
+				</td>
+			</tr><!-- This example will be removed -->
+		</table>
+
+	</section><!-- END OF Hosts configuration -->
+
+
+
+	<!-- New host -->
+	<section id="sectionNewHost" class="boxModel">
+
+		<header>
+			<h1>{{Crear host virtual}}</h1>
+		</header>
+
+		<table id="tableNewHost" class="hostList">
+			<tr>
+				<th>ServerName:</th>
+				<td>
+					<input type="text" id="txtServerName" placeholder="www.name.com" />
+				</td>
+			</tr>
+			<tr>
+				<th>Listen:</th>
+				<td>
+					<input type="text" id="txtListen" placeholder="80" />
+				</td>
+			</tr>
+			<tr>
+				<th>DocumentRoot:</th>
+				<td>
+					<input type="text" id="txtDocumentRoot" placeholder="/var/www/name" />
+				</td>
+			</tr>
+			<tr>
+				<th>WSGI (Django):</th>
+				<td>
+					<button id="btnEnableWSGI" class="blue">{{Activar}}</button>
+					<button id="btnDisableWSGI" class="red">
+						{{Desactivar}}
+					</button>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<button id="btnSaveActivateHost" class="green">
+						{{Guardar y activar}}
+					</button>
+					<button id="btnSaveHost" class="blue">
+						{{Guardar}}
+					</button>
+					<button id="btnCancelHost" class="red">
+						{{Cancelar}}
+					</button>
+				</td>
+			</tr>
+		</table>
+	</section><!-- END OF New host -->
+
+
+
+	<!-- Modules configuration -->
+	<section id="sectionMods" class="boxModel">
+
+		<header>
+			<h1>{{Configuración de módulos}}</h1>
+		</header>
+
+		<table id="tableHostList" class="hostList">
+			<!-- This example will be removed -->
+			<tr>
+				<td>rewrite</td>
+				<td>
+					<button id="btnEnableMod" class="blue">{{Activar}}</button>
+				</td>
+				<td>
+					<button id="btnDisableMod" class="red">
+						{{Desactivar}}
+					</button>
+				</td>
+			</tr><!-- This example will be removed -->
+		</table>
+	</section><!-- END OF Modules configuration -->
+
+</body>
+</html>
