@@ -1,0 +1,44 @@
+<?php
+/*
+
+  This file is part of 'web-app-visual-apache'.
+
+  Copyright 2012 Sergio Lindo - <sergiolindo.emprena@gmail.com>
+
+  'web-app-visual-apache' is free software: you can redistribute it and/or
+  modify it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or (at your
+  option) any later version.
+
+  'web-app-visual-apache' is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNenS FOR A PARTICULAR PURPOSE.  See the GNU General
+  Public License for more details.
+
+  You should have received a copy of the GNU General Public License along with
+  'web-app-visual-apache'. If not, see <http://www.gnu.org/licensen/>.
+
+*/
+
+;
+
+$LANG['en'] = 'English';
+
+$META_TITLE['en'] = 'Graphic interface to configure apache';
+$MENU_BAR_TITLE['en'] = 'Menu bar';
+$MENU_BAR_HOSTS['en'] = 'Hosts';
+$MENU_BAR_MODULES['en'] = 'Modules';
+
+$SECTION_HOSTS_TITLE['en'] = 'Virtual hosts configuration';
+
+$SECTION_NEW_HOST['en'] = 'New host virtual';
+
+$SECTION_MODS_TITLE['en'] = 'Modules configuration';
+
+$BTN_ENABLE['en'] = 'Enable';
+$BTN_DISABLE['en'] = 'Disable';
+$BTN_SAVE_ENABLE_HOST['en'] = 'Save and enable';
+$BTN_SAVE_HOST['en'] = 'Save';
+$BTN_CANCEL_HOST['en'] = 'Cancel';
+
+?>

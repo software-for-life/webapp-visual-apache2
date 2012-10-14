@@ -63,6 +63,7 @@ nav.menuBar a {
 	display:inline-block;
 	margin:0.2em;
 	text-align:center;
+	text-decoration:none;
 }
 
 nav.menuBar a * {
@@ -213,6 +214,25 @@ button.green:hover {
 	Individual style
 
    ========================================================================== */
+
+#divLanguageBar {
+	background-color: black;
+	border: 1px solid white;
+	display: inline-block;
+	float: right;
+	margin: .1em .1em 0px 0px;
+	padding-left: .5em;
+}
+
+#divLanguageBar a {
+	display: inline-block;
+	margin: .1em .5em .1em 0;
+	text-decoration: none;
+}
+
+#divLanguageBar a:hover {
+	text-decoration: underline;
+}
 
 #tableNewHost th, #tableNewHost td {
 	padding:.4em .5em;

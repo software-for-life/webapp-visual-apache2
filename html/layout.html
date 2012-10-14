@@ -26,11 +26,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>VisualApache - {{Interfaz gráfica para la configuración de apache.}}</title>
+	<title>VisualApache - {{META_TITLE}}</title>
 
-	<!-- REMOVE WHEN FINISHED -->
-	<base href="http://test.com/ironMan/">
-	<!-- REMOVE WHEN FINISHED -->
+	<!-- <base href="http://test.com/test/"> -->
 
 	<link rel="stylesheet" href="css/normalize.css" />
 	<link rel="stylesheet" href="css/visualapache.css" />
@@ -43,18 +41,27 @@
 	<!-- Menu bar -->
 	<nav class="menuBar">
 
-		<h1>{{Barra de menú}}</h1>
+		<h1>{{MENU_BAR_TITLE}}</h1>
 		<a id="aHosts" class="menuItem" href="#" title="{{Muestra la configuración de los hosts virtuales.}}">
 			<img src="img/iconHostOff.png"/>
-			{{Hosts}}
+			{{MENU_BAR_HOSTS}}
 		</a>
 
 		<a id="aMods" class="menuItem" href="#">
 			<img src="img/iconModOn.png"/>
-			<span>{{Módulos}}</span>
+			<span>{{MENU_BAR_MODULES}}</span>
 		</a>
 
 	</nav><!-- END OF Menu bar -->
+
+
+
+	<!-- Language bar -->
+	<div id="divLanguageBar">
+
+		{{LANGUAGES_AVAILABLE}}
+
+	</div><!-- END OF Language bar -->
 	<br/>
 
 
@@ -63,7 +70,7 @@
 	<section id="sectionHosts" class="boxModel">
 
 		<header>
-			<h1>{{Configuración de hosts virtuales}}</h1>
+			<h1>{{SECTION_HOSTS_TITLE}}</h1>
 		</header>
 
 		<table id="tableHostList" class="hostList">
@@ -72,11 +79,13 @@
 				<td>www.name.com</td>
 				<td>80</td>
 				<td>
-					<button id="btnEnableHost" class="blue">{{Activar}}</button>
+					<button id="btnEnableHost" class="blue">
+						{{BTN_ENABLE}}
+					</button>
 				</td>
 				<td>
 					<button id="btnDisableHost" class="red">
-						{{Desactivar}}
+						{{BTN_DISABLE}}
 					</button>
 				</td>
 			</tr><!-- This example will be removed -->
@@ -90,7 +99,7 @@
 	<section id="sectionNewHost" class="boxModel">
 
 		<header>
-			<h1>{{Crear host virtual}}</h1>
+			<h1>{{SECTION_NEW_HOST}}</h1>
 		</header>
 
 		<table id="tableNewHost" class="hostList">
@@ -115,22 +124,24 @@
 			<tr>
 				<th>WSGI (Django):</th>
 				<td>
-					<button id="btnEnableWSGI" class="blue">{{Activar}}</button>
+					<button id="btnEnableWSGI" class="blue">
+						{{BTN_ENABLE}}
+					</button>
 					<button id="btnDisableWSGI" class="red">
-						{{Desactivar}}
+						{{BTN_DISABLE}}
 					</button>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<button id="btnSaveActivateHost" class="green">
-						{{Guardar y activar}}
+					<button id="btnSaveEnableHost" class="green">
+						{{BTN_SAVE_ENABLE_HOST}}
 					</button>
 					<button id="btnSaveHost" class="blue">
-						{{Guardar}}
+						{{BTN_SAVE_HOST}}
 					</button>
 					<button id="btnCancelHost" class="red">
-						{{Cancelar}}
+						{{BTN_CANCEL_HOST}}
 					</button>
 				</td>
 			</tr>
@@ -143,7 +154,7 @@
 	<section id="sectionMods" class="boxModel">
 
 		<header>
-			<h1>{{Configuración de módulos}}</h1>
+			<h1>{{SECTION_MODS_TITLE}}</h1>
 		</header>
 
 		<table id="tableHostList" class="hostList">
@@ -151,11 +162,13 @@
 			<tr>
 				<td>rewrite</td>
 				<td>
-					<button id="btnEnableMod" class="blue">{{Activar}}</button>
+					<button id="btnEnableMod" class="blue">
+						{{BTN_ENABLE}}
+					</button>
 				</td>
 				<td>
 					<button id="btnDisableMod" class="red">
-						{{Desactivar}}
+						{{BTN_DISABLE}}
 					</button>
 				</td>
 			</tr><!-- This example will be removed -->
