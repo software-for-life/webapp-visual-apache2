@@ -124,6 +124,11 @@ section.boxModel th, section.boxModel td {
 	Buttons
    ========================================================================== */
 
+button.disabled {
+	opacity:0.4;
+	filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+
 button.blue, button.red, button.green {
 	border: 1px solid gainsboro;
 	border-radius: 2px;

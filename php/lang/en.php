@@ -31,7 +31,7 @@ $MENU_BAR_MODULES['en'] = 'Modules';
 
 $SECTION_HOSTS_TITLE['en'] = 'Virtual hosts configuration';
 
-$SECTION_NEW_HOST['en'] = 'New host virtual';
+$SECTION_NEW_HOST_TITLE['en'] = 'New host virtual';
 
 $SECTION_MODS_TITLE['en'] = 'Modules configuration';
 

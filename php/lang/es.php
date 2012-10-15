@@ -31,7 +31,7 @@ $MENU_BAR_MODULES['es'] = 'Módulos';
 
 $SECTION_HOSTS_TITLE['es'] = 'Configuración de hosts virtuales';
 
-$SECTION_NEW_HOST['es'] = 'Crear host virtual';
+$SECTION_NEW_HOST_TITLE['es'] = 'Crear host virtual';
 
 $SECTION_MODS_TITLE['es'] = 'Configuración de módulos';
 

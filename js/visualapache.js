@@ -23,8 +23,61 @@
 
 $(document).ready(function(){
 
+// ON READY DO
+
 	// Hide modules section.
 	$("#sectionMods").fadeOut(0);
+
+	// Get hosts list.
+	$.ajax({
+
+		url: "php/ajax/getHosts.php"
+
+	}).done(function( json_encoded_hosts_list ) {
+
+		var lines = '';
+
+		var object_hosts_list = eval( "(" + json_encoded_hosts_list + ")" );
+
+		for( var host_name in object_hosts_list ) {
+
+			if( object_hosts_list[host_name].host_activated ) {
+
+				btnEnableHost_disabled = ' disabled';
+				btnDisableHost_disabled = '';
+
+			} else {
+
+				btnEnableHost_disabled = '';
+				btnDisableHost_disabled = ' disabled';
+
+			}
+
+			lines += '' +
+			'<tr>' +
+				'<td>' + host_name + '</td>' +
+				'<td style="text-align:right;">' + object_hosts_list[host_name].port + '</td>' +
+				'<td>' +
+					'<button id="btnEnableHost" class="blue' + btnEnableHost_disabled + '">' +
+						'' + $BTN_ENABLE[$iso_lang] + '' +
+					'</button>' +
+				'</td>' +
+				'<td>' +
+					'<button id="btnDisableHost" class="red' + btnDisableHost_disabled + '">' +
+						'' + $BTN_DISABLE[$iso_lang] + '' +
+					'</button>' +
+				'</td>' +
+			'</tr>\n';
+
+		}// END OF for( var host_name in object_hosts_list )
+
+		$('#tableHostList').html( lines );
+
+	});// END OF .done(function( json_encoded_hosts_list )
+
+
+
+// EVENTS
 
 	// aHosts click.
 	$("#aHosts").click(function(event) {

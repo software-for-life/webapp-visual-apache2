@@ -22,7 +22,7 @@
 
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ISO_LANG}}">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -73,22 +73,8 @@
 			<h1>{{SECTION_HOSTS_TITLE}}</h1>
 		</header>
 
+		<!-- tableHostList filled with JS -->
 		<table id="tableHostList" class="hostList">
-			<!-- This example will be removed -->
-			<tr>
-				<td>www.name.com</td>
-				<td>80</td>
-				<td>
-					<button id="btnEnableHost" class="blue">
-						{{BTN_ENABLE}}
-					</button>
-				</td>
-				<td>
-					<button id="btnDisableHost" class="red">
-						{{BTN_DISABLE}}
-					</button>
-				</td>
-			</tr><!-- This example will be removed -->
 		</table>
 
 	</section><!-- END OF Hosts configuration -->
@@ -99,7 +85,7 @@
 	<section id="sectionNewHost" class="boxModel">
 
 		<header>
-			<h1>{{SECTION_NEW_HOST}}</h1>
+			<h1>{{SECTION_NEW_HOST_TITLE}}</h1>
 		</header>
 
 		<table id="tableNewHost" class="hostList">
