@@ -32,6 +32,13 @@ $MENU_BAR_MODULES['es'] = 'Módulos';
 $SECTION_HOSTS_TITLE['es'] = 'Configuración de hosts virtuales';
 
 $SECTION_NEW_HOST_TITLE['es'] = 'Crear host virtual';
+$SECTION_NEW_HOST_HOST_EXISTS['es'] = 'El host {{SERVER_NAME}} ya existe.';
+$SECTION_NEW_HOST_NO_DOCUMENT_ROOT['es'] = 'No se ha podido crear el directorio {{DOCUMENT_ROOT}}.';
+$SECTION_NEW_HOST_NO_LOGS_DIR['es'] = 'No se ha podido crear el subdirectorio {{DOCUMENT_ROOT}}/logs.';
+$SECTION_NEW_HOST_NO_BACKUP['es'] = 'No se pudo crear una copia de seguridad del fichero /etc/apache2/ports.conf.';
+$SECTION_NEW_HOST_FATAL_ERROR['es'] = 'Error crítico al modificar el fichero /etc/apache2/ports.conf. Apache puede dejar de funcionar. Debería restaurar la copia de seguridad /etc/apache2/ports.conf.backup.';
+$SECTION_NEW_HOST_NOT_CREATED['es'] = 'Error al crear el fichero /etc/apache2/sites-available/{{SERVER_NAME}}.';
+$SECTION_NEW_HOST_SUCCESS['es'] = 'Host {{SERVER_NAME}} creado con éxito.';
 
 $SECTION_MODS_TITLE['es'] = 'Configuración de módulos';
 

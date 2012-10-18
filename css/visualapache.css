@@ -43,6 +43,11 @@ h1 {
 }
 
 
+input[type="text"] {
+	color:black;
+}
+
+
 
 /* ==========================================================================
 	Menu bar
@@ -242,5 +247,26 @@ button.green:hover {
 #tableNewHost th, #tableNewHost td {
 	padding:.4em .5em;
 	white-space: nowrap;
+}
+
+#divMask {
+	background-color:rgba(50, 50, 50, .5);
+	display:none;
+	height:100%;
+	left:0px;
+	position:absolute;
+	top:0px;
+	width:100%;
+	z-index:9900;
+}
+
+#divMask label.message {
+	background-color:#EFF;
+	border:1px solid black;
+	color:black;
+	left:40%;
+	padding:1em;
+	position:absolute;
+	top:40%;
 }
 

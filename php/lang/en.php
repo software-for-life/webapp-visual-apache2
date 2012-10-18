@@ -32,6 +32,13 @@ $MENU_BAR_MODULES['en'] = 'Modules';
 $SECTION_HOSTS_TITLE['en'] = 'Virtual hosts configuration';
 
 $SECTION_NEW_HOST_TITLE['en'] = 'New host virtual';
+$SECTION_NEW_HOST_HOST_EXISTS['en'] = 'Host {{SERVER_NAME}} exists';
+$SECTION_NEW_HOST_NO_DOCUMENT_ROOT['en'] = 'Could not create {{DOCUMENT_ROOT}} dir.';
+$SECTION_NEW_HOST_NO_LOGS_DIR['en'] = 'Could not create {{DOCUMENT_ROOT}}/logs dir.';
+$SECTION_NEW_HOST_NO_BACKUP['en'] = 'Could not create backup of /etc/apache2/ports.conf.';
+$SECTION_NEW_HOST_FATAL_ERROR['en'] = 'Fatal error. Maybe /etc/apache2/ports.conf has been corrupted. Apache could stop working. You should restore backup /etc/apache2/ports.conf.backup.';
+$SECTION_NEW_HOST_NOT_CREATED['en'] = 'Could not create /etc/apache2/sites-available/{{SERVER_NAME}}.';
+$SECTION_NEW_HOST_SUCCESS['en'] = 'Host {{SERVER_NAME}} created.';
 
 $SECTION_MODS_TITLE['en'] = 'Modules configuration';
 

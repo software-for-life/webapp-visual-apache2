@@ -100,6 +100,41 @@
 				echo "\t\t\t$key: '".$value."',\n";
 			echo "\t\t};\n";
 
+			echo "\t\tvar \$SECTION_NEW_HOST_HOST_EXISTS = {\n";
+			foreach( $SECTION_NEW_HOST_HOST_EXISTS as $key => $value )
+				echo "\t\t\t$key: '".$value."',\n";
+			echo "\t\t};\n";
+
+			echo "\t\tvar \$SECTION_NEW_HOST_NO_DOCUMENT_ROOT = {\n";
+			foreach( $SECTION_NEW_HOST_NO_DOCUMENT_ROOT as $key => $value )
+				echo "\t\t\t$key: '".$value."',\n";
+			echo "\t\t};\n";
+
+			echo "\t\tvar \$SECTION_NEW_HOST_NO_LOGS_DIR = {\n";
+			foreach( $SECTION_NEW_HOST_NO_LOGS_DIR as $key => $value )
+				echo "\t\t\t$key: '".$value."',\n";
+			echo "\t\t};\n";
+
+			echo "\t\tvar \$SECTION_NEW_HOST_NO_BACKUP = {\n";
+			foreach( $SECTION_NEW_HOST_NO_BACKUP as $key => $value )
+				echo "\t\t\t$key: '".$value."',\n";
+			echo "\t\t};\n";
+
+			echo "\t\tvar \$SECTION_NEW_HOST_FATAL_ERROR = {\n";
+			foreach( $SECTION_NEW_HOST_FATAL_ERROR as $key => $value )
+				echo "\t\t\t$key: '".$value."',\n";
+			echo "\t\t};\n";
+
+			echo "\t\tvar \$SECTION_NEW_HOST_NOT_CREATED = {\n";
+			foreach( $SECTION_NEW_HOST_NOT_CREATED as $key => $value )
+				echo "\t\t\t$key: '".$value."',\n";
+			echo "\t\t};\n";
+
+			echo "\t\tvar \$SECTION_NEW_HOST_SUCCESS = {\n";
+			foreach( $SECTION_NEW_HOST_SUCCESS as $key => $value )
+				echo "\t\t\t$key: '".$value."',\n";
+			echo "\t\t};\n";
+
 			echo "\t\tvar \$SECTION_MODS_TITLE = {\n";
 			foreach( $SECTION_MODS_TITLE as $key => $value )
 				echo "\t\t\t$key: '".$value."',\n";

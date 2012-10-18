@@ -28,6 +28,213 @@ $(document).ready(function(){
 	// Hide modules section.
 	$("#sectionMods").fadeOut(0);
 
+	refresh_hosts_list();
+
+
+
+// EVENTS
+
+	// Menu bar.
+
+		// aHosts click.
+		$("#aHosts").click(function(event) {
+
+			event.preventDefault();
+
+			$("#aMods img").attr("src", "img/iconModOn.png");
+			$("#sectionMods").fadeOut(
+				100,
+				function() {
+					$("#aHosts img").attr("src", "img/iconHostOff.png");
+					$("#sectionHosts").fadeIn(100);
+					$("#sectionNewHost").fadeIn(100);
+				}
+			);
+
+		});// END of aHosts click.
+
+		// aMods click.
+		$("#aMods").click(function(event) {
+
+			event.preventDefault();
+
+			$("#aHosts img").attr("src", "img/iconHostOn.png");
+			$("#sectionHosts").fadeOut(100);
+			$("#sectionNewHost").fadeOut(
+				100,
+				function() {
+					$("#aMods img").attr("src", "img/iconModOff.png");
+					$("#sectionMods").fadeIn(100);
+				}
+			);
+
+		});// END of aMods click.
+
+
+	// New hosts.
+
+		// btnEnableWSGI click.
+		$('#btnEnableWSGI').click(function(event) {
+
+			if( ! $(this).hasClass( 'disabled' ) ) {
+
+				$('#btnDisableWSGI').removeClass( 'disabled' );
+				$(this).addClass( 'disabled' );
+
+			}
+
+		});// END OF btnEnableWSGI click.
+
+		// btnDisableWSGI click.
+		$('#btnDisableWSGI').click(function(event) {
+
+			if( ! $(this).hasClass( 'disabled' ) ) {
+
+				$('#btnEnableWSGI').removeClass( 'disabled' );
+				$(this).addClass( 'disabled' );
+
+			}
+
+		});// END OF btnDisableWSGI click.
+
+		// btnSaveHost click.
+		$('#btnSaveHost').click(function(event) {
+
+			// Send new host data.
+			$.ajax({
+				url: 'php/ajax/newHost.php',
+				type: 'POST',
+				data: {
+					server_name: $('#txtServerName').val(),
+					port: $('#txtListen').val(),
+					document_root: $('#txtDocumentRoot').val(),
+					wsgi_activated: ( $('#btnEnableWSGI.disabled').length != 0 ),
+					host_activated: false
+				}
+			}).done(function ( json_encode_returned_data ) {
+
+			// Decode json.
+
+				var object_returned_data = eval( "(" + json_encode_returned_data + ")" );
+
+
+
+			// Static texts.
+
+				var message = object_returned_data['message'];
+
+				message = message.replace(
+					'HOST_EXISTS',
+					$SECTION_NEW_HOST_HOST_EXISTS[$iso_lang]
+				);
+
+				message = message.replace(
+					'NO_DOCUMENT_ROOT',
+					$SECTION_NEW_HOST_NO_DOCUMENT_ROOT[$iso_lang]
+				);
+
+				message = message.replace(
+					'NO_LOGS_DIR',
+					$SECTION_NEW_HOST_NO_LOGS_DIR[$iso_lang]
+				);
+
+				message = message.replace(
+					'NO_BACKUP',
+					$SECTION_NEW_HOST_NO_BACKUP[$iso_lang]
+				);
+
+				message = message.replace(
+					'FATAL_ERROR',
+					$SECTION_NEW_HOST_FATAL_ERROR[$iso_lang]
+				);
+
+				message = message.replace(
+					'NOT_CREATED',
+					$SECTION_NEW_HOST_NOT_CREATED[$iso_lang]
+				);
+
+				message = message.replace(
+					'SUCCESS',
+					$SECTION_NEW_HOST_SUCCESS[$iso_lang]
+				);
+
+
+
+			// Host data needed.
+
+				message = message.replace(
+					'{{SERVER_NAME}}',
+					$('#txtServerName').val()
+				);
+
+				message = message.replace(
+					'{{DOCUMENT_ROOT}}',
+					$('#txtDocumentRoot').val()
+				);
+
+
+
+			// Style info.
+
+				if( object_returned_data['return'] ) {
+
+					refresh_hosts_list();
+
+					$('#btnCancelHost').click();
+
+					$('#divMask label.message').css({
+						color: '#099',
+						'font-weight': 'bold'
+					});
+
+				} else if( ! object_returned_data['return'] ) {
+
+					$('#divMask label.message').css({
+						color: '#900',
+						'font-weight': 'bold'
+					});
+
+				}
+
+
+
+			// Show info.
+
+				$('#divMask label.message').html( message );
+
+				$('#divMask')
+					.fadeIn( 100 )
+					.delay( 3000 )
+					.fadeOut( 100, function() {
+						$('#divMask label.message').html( '' );
+						$('#divMask label.message').css({
+							color: 'black',
+							'font-weight': 'normal'
+						});
+					})
+				;
+
+			});// END OF $.ajax php/ajax/newHost.php.
+		
+		});// END OF btnSaveHost click.
+
+		// btnCancelHost click.
+		$('#btnCancelHost').click(function(event) {
+
+			$('#txtServerName').val( '' );
+			$('#txtListen').val( '' );
+			$('#txtDocumentRoot').val( '' );
+			$('#btnDisableWSGI').click();
+
+		});
+});
+
+
+
+// FUNCTIONS
+
+function refresh_hosts_list() {
+
 	// Get hosts list.
 	$.ajax({
 
@@ -37,10 +244,12 @@ $(document).ready(function(){
 
 		var lines = '';
 
+		// Decode json.
 		var object_hosts_list = eval( "(" + json_encoded_hosts_list + ")" );
 
 		for( var host_name in object_hosts_list ) {
 
+			// Get host state.
 			if( object_hosts_list[host_name].host_activated ) {
 
 				btnEnableHost_disabled = ' disabled';
@@ -53,6 +262,7 @@ $(document).ready(function(){
 
 			}
 
+			// Show html.
 			lines += '' +
 			'<tr>' +
 				'<td>' + host_name + '</td>' +
@@ -73,45 +283,7 @@ $(document).ready(function(){
 
 		$('#tableHostList').html( lines );
 
-	});// END OF .done(function( json_encoded_hosts_list )
+	});// END OF $.ajax php/ajax/getHosts.php
 
-
-
-// EVENTS
-
-	// aHosts click.
-	$("#aHosts").click(function(event) {
-
-		event.preventDefault();
-
-		$("#aMods img").attr("src", "img/iconModOn.png");
-		$("#sectionMods").fadeOut(
-			100,
-			function() {
-				$("#aHosts img").attr("src", "img/iconHostOff.png");
-				$("#sectionHosts").fadeIn(100);
-				$("#sectionNewHost").fadeIn(100);
-			}
-		);
-
-	});// END of aHosts click.
-
-	// aMods click.
-	$("#aMods").click(function(event) {
-
-		event.preventDefault();
-
-		$("#aHosts img").attr("src", "img/iconHostOn.png");
-		$("#sectionHosts").fadeOut(100);
-		$("#sectionNewHost").fadeOut(
-			100,
-			function() {
-				$("#aMods img").attr("src", "img/iconModOff.png");
-				$("#sectionMods").fadeIn(100);
-			}
-		);
-
-	});// END of aMods click.
-
-});
+}// END OF function refresh_hosts_list().
 
