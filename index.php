@@ -25,12 +25,21 @@
 // REQUIRED FILES.
 
 	// Languages.
+	$language_files = array();
+	$i = 0;
 	$lang_dir = dir("php/lang");
-	while ( ($file = $lang_dir->read()) !== false )
+	while ( ($file = $lang_dir->read()) !== false ) {
+
 		if( strpos( $file, '.php' ) !== false ) {
+
 	   		require_once "php/lang/$file";
-			substr( $file, 0, 2 );
+
+			$language_files[$i] = $file;
+			$i ++;
+
 		}
+
+	}
 	$lang_dir->close();
 
 
@@ -59,115 +68,70 @@
 
 	// Global variables from PHP to JS.
 
-		if( strpos( $file[$i], '<script src="js/visualapache.js"></script>' ) ) {
+		if( strpos( $file[$i], '{{PHP_TO_JS}}' ) ) {
 
-			echo "\t<script>\n\t\t// Global variables from PHP to JS. (Added by index.php controller)\n";
+			$lines = '';
 
-			echo "\t\tvar \$iso_lang = '$iso_lang';\n";
+		// Create object names.
 
-			echo "\t\tvar \$LANG = {\n";
-			foreach( $LANG as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+			$lines .= "\n\t\t// Create object names.\n";
 
-			echo "\t\tvar \$META_TITLE = {\n";
-			foreach( $META_TITLE as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+			// Read a language file.
+			$file_php_lang_es = file( 'php/lang/es.php' );
 
-			echo "\t\tvar \$MENU_BAR_TITLE = {\n";
-			foreach( $MENU_BAR_TITLE as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+			// Get only delaration lines.
+			$variable_declaration_lines = preg_grep(
+				"/^[$]/",
+				$file_php_lang_es
+			);
 
-			echo "\t\tvar \$MENU_BAR_HOSTS = {\n";
-			foreach( $MENU_BAR_HOSTS as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+			foreach( $variable_declaration_lines as $key => $value ) {
 
-			echo "\t\tvar \$MENU_BAR_MODULES = {\n";
-			foreach( $MENU_BAR_MODULES as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+				// Variable name ends.
+				$end_position = strpos( $value, '[' );
 
-			echo "\t\tvar \$SECTION_HOSTS_TITLE = {\n";
-			foreach( $SECTION_HOSTS_TITLE as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+				// Extract variable name.
+				$variable_name = substr( $value, 0, $end_position );
 
-			echo "\t\tvar \$SECTION_NEW_HOST_TITLE = {\n";
-			foreach( $SECTION_NEW_HOST_TITLE as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+				// Make declaration sentence.
+				$lines .= "\t\tvar $variable_name = new Object();\n";
 
-			echo "\t\tvar \$SECTION_NEW_HOST_HOST_EXISTS = {\n";
-			foreach( $SECTION_NEW_HOST_HOST_EXISTS as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+			}
 
-			echo "\t\tvar \$SECTION_NEW_HOST_NO_DOCUMENT_ROOT = {\n";
-			foreach( $SECTION_NEW_HOST_NO_DOCUMENT_ROOT as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+		// Fill with values.
 
-			echo "\t\tvar \$SECTION_NEW_HOST_NO_LOGS_DIR = {\n";
-			foreach( $SECTION_NEW_HOST_NO_LOGS_DIR as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+			foreach( $language_files as $key => $value ) {
 
-			echo "\t\tvar \$SECTION_NEW_HOST_NO_BACKUP = {\n";
-			foreach( $SECTION_NEW_HOST_NO_BACKUP as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+				$lines .= "\n\t\t// $value language values.\n";
 
-			echo "\t\tvar \$SECTION_NEW_HOST_FATAL_ERROR = {\n";
-			foreach( $SECTION_NEW_HOST_FATAL_ERROR as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+				// Read file.
+				$file_php_lang = file( "php/lang/$value" );
 
-			echo "\t\tvar \$SECTION_NEW_HOST_NOT_CREATED = {\n";
-			foreach( $SECTION_NEW_HOST_NOT_CREATED as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+				// Get only delaration lines.
+				$variable_declaration_lines = preg_grep(
+					"/^[$]/",
+					$file_php_lang
+				);
 
-			echo "\t\tvar \$SECTION_NEW_HOST_SUCCESS = {\n";
-			foreach( $SECTION_NEW_HOST_SUCCESS as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+				// Reuse declaration lines.
+				foreach( $variable_declaration_lines as $key => $value ) {
 
-			echo "\t\tvar \$SECTION_MODS_TITLE = {\n";
-			foreach( $SECTION_MODS_TITLE as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+					// Make declaration sentence.
+					$lines .= "\t\t$value";
 
-			echo "\t\tvar \$BTN_ENABLE = {\n";
-			foreach( $BTN_ENABLE as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+				}
 
-			echo "\t\tvar \$BTN_DISABLE = {\n";
-			foreach( $BTN_DISABLE as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+			}
 
-			echo "\t\tvar \$BTN_SAVE_ENABLE_HOST = {\n";
-			foreach( $BTN_SAVE_ENABLE_HOST as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+		// Show html.
 
-			echo "\t\tvar \$BTN_SAVE_HOST = {\n";
-			foreach( $BTN_SAVE_HOST as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
+			$file[$i] = str_replace(
+				'{{PHP_TO_JS}}',
+				$lines,
+				$file[$i]
+			);
 
-			echo "\t\tvar \$BTN_CANCEL_HOST = {\n";
-			foreach( $BTN_CANCEL_HOST as $key => $value )
-				echo "\t\t\t$key: '".$value."',\n";
-			echo "\t\t};\n";
-
-			echo "\t</script>\n";
-
-		}// END OF if( strpos( $file[$i], '<script src="js/visualapache.js"></script>' ) )
+		}// END OF if( strpos( $file[$i], '{{PHP_TO_JS}}' ) ).
 
 
 	// Static texts.
@@ -251,7 +215,7 @@
 		);
 
 
-	// Languages available
+	// Choose language menu (Languages available)
 
 		if( strpos( $file[$i], '{{LANGUAGES_AVAILABLE}}' ) !== false ) {
 
