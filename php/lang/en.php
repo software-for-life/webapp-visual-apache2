@@ -31,7 +31,7 @@ $MENU_BAR_MODULES['en'] = 'Modules';
 
 $SECTION_HOSTS_TITLE['en'] = 'Virtual hosts configuration';
 
-$SECTION_NEW_HOST_TITLE['en'] = 'New host virtual';
+$SECTION_NEW_HOST_TITLE['en'] = 'New virtual host';
 $SECTION_NEW_HOST_HOST_EXISTS['en'] = 'Host {{SERVER_NAME}} exists';
 $SECTION_NEW_HOST_NO_DOCUMENT_ROOT['en'] = 'Could not create {{DOCUMENT_ROOT}} dir.';
 $SECTION_NEW_HOST_NO_LOGS_DIR['en'] = 'Could not create {{DOCUMENT_ROOT}}/logs dir.';
