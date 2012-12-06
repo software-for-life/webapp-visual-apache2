@@ -72,7 +72,7 @@ $return_data = array(
 			// Test if apache is listening on this port.
 			$is_listening = ( count(
 				preg_grep(
-					"/^Listen ".$_POST['port']."/",
+					"/^Listen ".$_POST['port']."$/",
 					$ports_file
 				)
 			) != 0 );
