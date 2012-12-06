@@ -40,6 +40,8 @@ $SECTION_NEW_HOST_FATAL_ERROR['es'] = 'Error crítico al modificar el fichero /e
 $SECTION_NEW_HOST_NOT_CREATED['es'] = 'Error al crear el fichero /etc/apache2/sites-available/{{SERVER_NAME}}.';
 $SECTION_NEW_HOST_SUCCESS['es'] = 'Host {{SERVER_NAME}} creado con éxito.';
 
+$SECTION_EDIT_HOST_TITLE['es'] = 'Editar host virtual';
+
 $SECTION_MODS_TITLE['es'] = 'Configuración de módulos';
 
 $BTN_ENABLE['es'] = 'Activar';
@@ -47,5 +49,6 @@ $BTN_DISABLE['es'] = 'Desactivar';
 $BTN_SAVE_ENABLE_HOST['es'] = 'Guardar y activar';
 $BTN_SAVE_HOST['es'] = 'Guardar';
 $BTN_CANCEL_HOST['es'] = 'Cancelar';
+$BTN_DELETE_HOST['es'] = 'Eliminar';
 
 ?>

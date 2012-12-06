@@ -21,6 +21,12 @@
 
 ;
 
+// GLOBAL VARIABLES.
+
+	document.object_list_of_hosts;
+
+
+
 $(document).ready(function(){
 
 // ON READY DO
@@ -69,6 +75,37 @@ $(document).ready(function(){
 			);
 
 		});// END of aMods click.
+
+
+
+	// List of hosts.
+
+		// List item click.
+		document.list_item_click = function( event ) {
+
+		// Reuse new host section.
+
+			// Change new host section title.
+			$('#sectionNewHost header h1').html(
+				$SECTION_EDIT_HOST_TITLE[$iso_lang]
+			);
+
+			// Fill with host data.
+			$('#txtServerName').val( event.srcElement.innerHTML );
+			$('#txtListen').val(
+				document.object_list_of_hosts[event.srcElement.innerHTML].port
+			);
+			$('#txtDocumentRoot').val(
+				document.object_list_of_hosts[event.srcElement.innerHTML].document_root
+			);
+			if( document.object_list_of_hosts[event.srcElement.innerHTML].django_activated )
+				$('#btnEnableWSGI').click();
+			else
+				$('#btnDisableWSGI').click();
+			$('#btnDeleteHost').fadeIn(0);
+
+		}// END OF List item click.
+
 
 
 	// New hosts.
@@ -221,12 +258,16 @@ $(document).ready(function(){
 		// btnCancelHost click.
 		$('#btnCancelHost').click(function(event) {
 
+			$('#sectionNewHost header h1').html(
+				$SECTION_NEW_HOST_TITLE[$iso_lang]
+			);
 			$('#txtServerName').val( '' );
 			$('#txtListen').val( '' );
 			$('#txtDocumentRoot').val( '' );
 			$('#btnDisableWSGI').click();
-
+			$('#btnDeleteHost').fadeOut(0);
 		});
+
 });
 
 
@@ -245,12 +286,12 @@ function refresh_hosts_list() {
 		var lines = '';
 
 		// Decode json.
-		var object_hosts_list = eval( "(" + json_encoded_hosts_list + ")" );
+		document.object_list_of_hosts = eval( "(" + json_encoded_hosts_list + ")" );
 
-		for( var host_name in object_hosts_list ) {
+		for( var host_name in document.object_list_of_hosts ) {
 
 			// Get host state.
-			if( object_hosts_list[host_name].host_activated ) {
+			if( document.object_list_of_hosts[host_name].host_activated ) {
 
 				btnEnableHost_disabled = ' disabled';
 				btnDisableHost_disabled = '';
@@ -265,8 +306,8 @@ function refresh_hosts_list() {
 			// Show html.
 			lines += '' +
 			'<tr>' +
-				'<td>' + host_name + '</td>' +
-				'<td style="text-align:right;">' + object_hosts_list[host_name].port + '</td>' +
+				'<td onclick="document.list_item_click( event );">' + host_name + '</td>' +
+				'<td style="text-align:right;">' + document.object_list_of_hosts[host_name].port + '</td>' +
 				'<td>' +
 					'<button id="btnEnableHost" class="blue' + btnEnableHost_disabled + '">' +
 						'' + $BTN_ENABLE[$iso_lang] + '' +

@@ -214,6 +214,12 @@
 			$file[$i]
 		);
 
+		$file[$i] = str_replace(
+			'{{BTN_DELETE_HOST}}',
+			$BTN_DELETE_HOST[$iso_lang],
+			$file[$i]
+		);
+
 
 	// Choose language menu (Languages available)
 

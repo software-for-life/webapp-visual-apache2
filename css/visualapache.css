@@ -249,6 +249,10 @@ button.green:hover {
 	white-space: nowrap;
 }
 
+#btnDeleteHost {
+	display:none;
+}
+
 #divMask {
 	background-color:rgba(50, 50, 50, .5);
 	display:none;

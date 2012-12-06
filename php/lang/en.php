@@ -40,6 +40,8 @@ $SECTION_NEW_HOST_FATAL_ERROR['en'] = 'Fatal error. Maybe /etc/apache2/ports.con
 $SECTION_NEW_HOST_NOT_CREATED['en'] = 'Could not create /etc/apache2/sites-available/{{SERVER_NAME}}.';
 $SECTION_NEW_HOST_SUCCESS['en'] = 'Host {{SERVER_NAME}} created.';
 
+$SECTION_EDIT_HOST_TITLE['en'] = 'Edit virtual host';
+
 $SECTION_MODS_TITLE['en'] = 'Modules configuration';
 
 $BTN_ENABLE['en'] = 'Enable';
@@ -47,5 +49,6 @@ $BTN_DISABLE['en'] = 'Disable';
 $BTN_SAVE_ENABLE_HOST['en'] = 'Save and enable';
 $BTN_SAVE_HOST['en'] = 'Save';
 $BTN_CANCEL_HOST['en'] = 'Cancel';
+$BTN_DELETE_HOST['en'] = 'Delete';
 
 ?>
