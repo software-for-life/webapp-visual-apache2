@@ -4,7 +4,7 @@ Web application to configure apache2.
 
 ### Screenshoot.
 
-<img style="border:0px;" src="https://lh6.googleusercontent.com/-R2cxUxAs-j0/UL3hXsM6tjI/AAAAAAAACMI/3cuBeYNWCFo/s800/visualapache.jpg">
+<img style="border:0px;" src="https://lh5.googleusercontent.com/-mxuF31Pdq6o/UMI7Kyd3-VI/AAAAAAAACM0/vqP5wrKDZqo/s640/webapp-visual-apache2.jpg">
 
 ### Install and configure.
 
