@@ -268,6 +268,98 @@ $(document).ready(function(){
 			$('#btnDeleteHost').fadeOut(0);
 		});
 
+		// btnDeleteHost click.
+		$('#btnDeleteHost').click(function(event) {
+
+			$.ajax({
+				url: 'php/ajax/deleteHost.php',
+				type: 'POST',
+				data: {
+					server_name: $('#txtServerName').val()
+				}
+			}).done(function( json_encode_returned_data ){
+
+			// DECODE JSON.
+
+				var object_returned_data = eval( "(" + json_encode_returned_data + ")" );
+
+
+			// Static texts.
+
+				var message = object_returned_data['message'];
+
+				message = message.replace(
+					'HOST_DOES_NOT_EXIST',
+					$SECTION_DELETE_HOST_HOST_DOES_NOT_EXIST[$iso_lang]
+				);
+
+				message = message.replace(
+					'PORT_NO_BACKUP',
+					$SECTION_DELETE_HOST_PORT_NO_BACKUP[$iso_lang]
+				);
+
+				message = message.replace(
+					'PORT_FATAL_ERROR',
+					$SECTION_DELETE_HOST_PORT_FATAL_ERROR[$iso_lang]
+				);
+
+				message = message.replace(
+					'SUCCESS',
+					$SECTION_DELETE_HOST_SUCCESS[$iso_lang]
+				);
+
+
+			// Host data needed.
+
+				message = message.replace(
+					'{{SERVER_NAME}}',
+					$('#txtServerName').val()
+				);
+
+
+			// Style info.
+
+				if( object_returned_data['return'] ) {
+
+					refresh_hosts_list();
+
+					$('#btnCancelHost').click();
+
+					$('#divMask label.message').css({
+						color: '#099',
+						'font-weight': 'bold'
+					});
+
+				} else if( ! object_returned_data['return'] ) {
+
+					$('#divMask label.message').css({
+						color: '#900',
+						'font-weight': 'bold'
+					});
+
+				}
+
+
+			// Show info.
+
+				$('#divMask label.message').html( message );
+
+				$('#divMask')
+					.fadeIn( 100 )
+					.delay( 3000 )
+					.fadeOut( 100, function() {
+						$('#divMask label.message').html( '' );
+						$('#divMask label.message').css({
+							color: 'black',
+							'font-weight': 'normal'
+						});
+					})
+				;
+
+			});// END OF $.ajax php/ajax/deleteHost.php.
+
+		});// END OF btnDeleteHost click.
+
 });
 
 
