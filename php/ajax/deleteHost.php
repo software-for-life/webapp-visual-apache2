@@ -137,29 +137,42 @@ $return_data = array(
 
 		// DEACTIVATE HOST.
 
-			if( is_file( '/etc/apache2/sites-enabled/'.$_POST['server_name'] )
-			and ! unlink( '/etc/apache2/sites-enabled/'.$_POST['server_name'] ) )
+			// Make a backup of the file.
+			$backup_created = copy(
+				'/etc/apache2/sites-available/'.$_POST['server_name'],
+				'/etc/apache2/sites-available/'.$_POST['server_name'].'.backup'
+			);
 
-				$return['message'] = 'HOST_STILL_ACTIVATED';
+			if( ! $backup_created )
+				$return_data['message'] = 'HOST_NO_BACKUP';
+
+			else if( $backup_created ) {
+
+				if( is_file( '/etc/apache2/sites-enabled/'.$_POST['server_name'] )
+				and ! unlink( '/etc/apache2/sites-enabled/'.$_POST['server_name'] ) )
+
+					$return_data['message'] = 'HOST_STILL_ACTIVATED';
 
 
-			else { // Host is deactivated.
+				else { // Host is deactivated.
 
-			// REMOVE FILE OF HOST.
+				// REMOVE FILE OF HOST.
 
-				if( ! unlink( '/etc/apache2/sites-available/'.$_POST['server_name'] ) )
+					if( ! unlink( '/etc/apache2/sites-available/'.$_POST['server_name'] ) )
 
-					$return['message'] = 'HOST_NOT_REMOVED';
+						$return_data['message'] = 'HOST_NOT_REMOVED';
 
 
-				else { // Host is removed.
+					else { // Host is removed.
 
-					$return_data['return'] = true;
-					$return_data['message'] = 'SUCCESS';
+						$return_data['return'] = true;
+						$return_data['message'] = 'SUCCESS';
 
-				}// END OF Host is removed.
+					}// END OF Host is removed.
 
-			}// END OF Host is deactivated.
+				}// END OF Host is deactivated.
+
+			}// END OF else if( $backup_created )
 
 		}// END OF if( $stuff_of_port_done )
 

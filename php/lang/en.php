@@ -45,6 +45,9 @@ $SECTION_EDIT_HOST_TITLE['en'] = 'Edit virtual host';
 $SECTION_DELETE_HOST_HOST_DOES_NOT_EXIST['en'] = 'Host {{SERVER_NAME}} does not exist.';
 $SECTION_DELETE_HOST_PORT_NO_BACKUP['en'] = 'Could not create backup of /etc/apache2/ports.conf.';
 $SECTION_DELETE_HOST_PORT_FATAL_ERROR['en'] = 'Fatal error. Maybe /etc/apache2/ports.conf has been corrupted. Apache could stop working. You should restore from /etc/apache2/ports.conf.backup.';
+$SECTION_DELETE_HOST_HOST_NO_BACKUP['en'] = 'Could not create backup of /etc/apache2/sites-available/{{SERVER_NAME}}.';
+$SECTION_DELETE_HOST_HOST_STILL_ACTIVATED['en'] = 'Host {{SERVER_NAME}} still activated.';
+$SECTION_DELETE_HOST_HOST_NOT_REMOVED['en'] = 'Could not delete /etc/apache2/sites-available/{{SERVER_NAME}}.';
 $SECTION_DELETE_HOST_SUCCESS['en'] = 'Host {{SERVER_NAME}} deleted.';
 
 

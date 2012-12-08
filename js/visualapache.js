@@ -304,6 +304,21 @@ $(document).ready(function(){
 				);
 
 				message = message.replace(
+					'HOST_NO_BACKUP',
+					$SECTION_DELETE_HOST_HOST_NO_BACKUP[$iso_lang]
+				);
+
+				message = message.replace(
+					'HOST_STILL_ACTIVATED',
+					$SECTION_DELETE_HOST_HOST_STILL_ACTIVATED[$iso_lang]
+				);
+
+				message = message.replace(
+					'HOST_NOT_REMOVED',
+					$SECTION_DELETE_HOST_HOST_NOT_REMOVED[$iso_lang]
+				);
+
+				message = message.replace(
 					'SUCCESS',
 					$SECTION_DELETE_HOST_SUCCESS[$iso_lang]
 				);
