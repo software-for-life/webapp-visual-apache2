@@ -4,7 +4,7 @@ Web application to configure apache2.
 
 <img style="border:0px;" src="https://raw.github.com/binary-sequence/webapp-visual-apache2/master/img/gplv3-127x51.png">
 
-Copyright 2012 Sergio Lindo - <sergiolindo.empresa@gmail.com>
+Copyright 2012 Sergio Lindo - <sergiolindo.empresa at gmail.com>
 
 'webapp-visual-apache2' is free software: you can redistribute it and/or
 modify it under the terms of the GNU General Public License as published by
