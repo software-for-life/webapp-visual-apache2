@@ -91,7 +91,7 @@ $return_data = array(
 
 				if( !$backup_created )
 
-					$return_data['message'] = 'NO_BACKUP';
+					$return_data['message'] = 'PORTS_FILE_NO_BACKUP';
 
 				if( $backup_created ) {
 
@@ -113,7 +113,7 @@ $return_data = array(
 
 					// Write all the lines.
 					if( ! fwrite( $resource_ports_file, $lines ) )
-						$return_data['message'] = 'FATAL_ERROR';
+						$return_data['message'] = 'PORTS_FILE_CORRUPTED';
 					else
 						$is_listening = true;
 
@@ -155,10 +155,10 @@ $return_data = array(
 
 				// Write content.
 				if( ! fwrite( $resource_host_file, $lines ) )
-					$return_data['message'] = 'NOT_CREATED';
+					$return_data['message'] = 'HOST_NOT_CREATED';
 				else {
 					$return_data['return'] = true;
-					$return_data['message'] = 'SUCCESS';
+					$return_data['message'] = 'HOST_CREATED';
 				}
 
 				fclose( $resource_host_file );

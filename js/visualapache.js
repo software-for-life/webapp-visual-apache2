@@ -162,37 +162,37 @@ $(document).ready(function(){
 
 				message = message.replace(
 					'HOST_EXISTS',
-					$SECTION_NEW_HOST_HOST_EXISTS[$iso_lang]
+					$HOST_EXISTS[$iso_lang]
 				);
 
 				message = message.replace(
 					'NO_DOCUMENT_ROOT',
-					$SECTION_NEW_HOST_NO_DOCUMENT_ROOT[$iso_lang]
+					$NO_DOCUMENT_ROOT[$iso_lang]
 				);
 
 				message = message.replace(
 					'NO_LOGS_DIR',
-					$SECTION_NEW_HOST_NO_LOGS_DIR[$iso_lang]
+					$NO_LOGS_DIR[$iso_lang]
 				);
 
 				message = message.replace(
-					'NO_BACKUP',
-					$SECTION_NEW_HOST_NO_BACKUP[$iso_lang]
+					'PORTS_FILE_NO_BACKUP',
+					$PORTS_FILE_NO_BACKUP[$iso_lang]
 				);
 
 				message = message.replace(
-					'FATAL_ERROR',
-					$SECTION_NEW_HOST_FATAL_ERROR[$iso_lang]
+					'PORTS_FILE_CORRUPTED',
+					$PORTS_FILE_CORRUPTED[$iso_lang]
 				);
 
 				message = message.replace(
-					'NOT_CREATED',
-					$SECTION_NEW_HOST_NOT_CREATED[$iso_lang]
+					'HOST_NOT_CREATED',
+					$HOST_NOT_CREATED[$iso_lang]
 				);
 
 				message = message.replace(
-					'SUCCESS',
-					$SECTION_NEW_HOST_SUCCESS[$iso_lang]
+					'HOST_CREATED',
+					$HOST_CREATED[$iso_lang]
 				);
 
 
@@ -290,37 +290,37 @@ $(document).ready(function(){
 
 				message = message.replace(
 					'HOST_DOES_NOT_EXIST',
-					$SECTION_DELETE_HOST_HOST_DOES_NOT_EXIST[$iso_lang]
+					$HOST_DOES_NOT_EXIST[$iso_lang]
 				);
 
 				message = message.replace(
-					'PORT_NO_BACKUP',
-					$SECTION_DELETE_HOST_PORT_NO_BACKUP[$iso_lang]
+					'PORTS_FILE_NO_BACKUP',
+					$PORTS_FILE_NO_BACKUP[$iso_lang]
 				);
 
 				message = message.replace(
-					'PORT_FATAL_ERROR',
-					$SECTION_DELETE_HOST_PORT_FATAL_ERROR[$iso_lang]
+					'PORTS_FILE_CORRUPTED',
+					$PORTS_FILE_CORRUPTED[$iso_lang]
 				);
 
 				message = message.replace(
 					'HOST_NO_BACKUP',
-					$SECTION_DELETE_HOST_HOST_NO_BACKUP[$iso_lang]
+					$HOST_NO_BACKUP[$iso_lang]
 				);
 
 				message = message.replace(
 					'HOST_STILL_ACTIVATED',
-					$SECTION_DELETE_HOST_HOST_STILL_ACTIVATED[$iso_lang]
+					$HOST_STILL_ACTIVATED[$iso_lang]
 				);
 
 				message = message.replace(
-					'HOST_NOT_REMOVED',
-					$SECTION_DELETE_HOST_HOST_NOT_REMOVED[$iso_lang]
+					'HOST_DOES_NOT_REMOVED',
+					$HOST_DOES_NOT_REMOVED[$iso_lang]
 				);
 
 				message = message.replace(
-					'SUCCESS',
-					$SECTION_DELETE_HOST_SUCCESS[$iso_lang]
+					'HOST_DELETED',
+					$HOST_DELETED[$iso_lang]
 				);
 
 

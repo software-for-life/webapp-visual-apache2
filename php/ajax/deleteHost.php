@@ -100,7 +100,7 @@ $return_data = array(
 			);
 
 			if( ! $backup_created )
-				$return_data['message'] = 'PORT_NO_BACKUP';
+				$return_data['message'] = 'PORTS_FILE_NO_BACKUP';
 
 			// Write changes.
 			else if( $backup_created ) {
@@ -123,7 +123,7 @@ $return_data = array(
 
 				// Write all the lines.
 				if( ! fwrite( $resource_ports_file, $lines ) )
-					$return_data['message'] = 'PORT_FATAL_ERROR';
+					$return_data['message'] = 'PORTS_FILE_CORRUPTED';
 				else
 					$stuff_of_port_done = true;
 
@@ -160,13 +160,13 @@ $return_data = array(
 
 					if( ! unlink( '/etc/apache2/sites-available/'.$_POST['server_name'] ) )
 
-						$return_data['message'] = 'HOST_NOT_REMOVED';
+						$return_data['message'] = 'HOST_DOES_NOT_REMOVED';
 
 
 					else { // Host is removed.
 
 						$return_data['return'] = true;
-						$return_data['message'] = 'SUCCESS';
+						$return_data['message'] = 'HOST_DELETED';
 
 					}// END OF Host is removed.
 

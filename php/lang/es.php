@@ -30,28 +30,8 @@ $MENU_BAR_HOSTS['es'] = 'Hosts';
 $MENU_BAR_MODULES['es'] = 'Módulos';
 
 $SECTION_HOSTS_TITLE['es'] = 'Configuración de hosts virtuales';
-
 $SECTION_NEW_HOST_TITLE['es'] = 'Crear host virtual';
-$SECTION_NEW_HOST_HOST_EXISTS['es'] = 'El host {{SERVER_NAME}} ya existe.';
-$SECTION_NEW_HOST_NO_DOCUMENT_ROOT['es'] = 'No se ha podido crear el directorio {{DOCUMENT_ROOT}}.';
-$SECTION_NEW_HOST_NO_LOGS_DIR['es'] = 'No se ha podido crear el subdirectorio {{DOCUMENT_ROOT}}/logs.';
-$SECTION_NEW_HOST_NO_BACKUP['es'] = 'No se pudo crear una copia de seguridad del fichero /etc/apache2/ports.conf.';
-$SECTION_NEW_HOST_FATAL_ERROR['es'] = 'Error crítico al modificar el fichero /etc/apache2/ports.conf. Apache puede dejar de funcionar. Debería restaurar la copia de seguridad /etc/apache2/ports.conf.backup.';
-$SECTION_NEW_HOST_NOT_CREATED['es'] = 'Error al crear el fichero /etc/apache2/sites-available/{{SERVER_NAME}}.';
-$SECTION_NEW_HOST_SUCCESS['es'] = 'Host {{SERVER_NAME}} creado.';
-
 $SECTION_EDIT_HOST_TITLE['es'] = 'Editar host virtual';
-
-$SECTION_DELETE_HOST_HOST_DOES_NOT_EXIST['es'] = 'El host {{SERVER_NAME}} no existe.';
-$SECTION_DELETE_HOST_PORT_NO_BACKUP['es'] = 'No se pudo crear una copia de seguridad del fichero /etc/apache2/ports.conf.';
-$SECTION_DELETE_HOST_PORT_FATAL_ERROR['es'] = 'Error crítico al modificar el fichero /etc/apache2/ports.conf. Apache puede dejar de funcionar. Debería restaurar la copia de seguridad /etc/apache2/ports.conf.backup.';
-$SECTION_DELETE_HOST_HOST_NO_BACKUP['es'] = 'No se pudo crear una copia de seguridad del fichero /etc/apache2/sites-available/{{SERVER_NAME}}.';
-$SECTION_DELETE_HOST_HOST_STILL_ACTIVATED['es'] = 'Host {{SERVER_NAME}} aún está activado.';
-$SECTION_DELETE_HOST_HOST_NOT_REMOVED['es'] = 'No se pudo eliminar el fichero /etc/apache2/sites-available/{{SERVER_NAME}}.';
-$SECTION_DELETE_HOST_SUCCESS['es'] = 'Host {{SERVER_NAME}} eliminado.';
-
-
-
 $SECTION_MODS_TITLE['es'] = 'Configuración de módulos';
 
 $BTN_ENABLE['es'] = 'Activar';
@@ -61,4 +41,16 @@ $BTN_SAVE_HOST['es'] = 'Guardar';
 $BTN_CANCEL_HOST['es'] = 'Cancelar';
 $BTN_DELETE_HOST['es'] = 'Eliminar';
 
+$HOST_EXISTS['es'] = 'El host {{SERVER_NAME}} ya existe.';
+$NO_DOCUMENT_ROOT['es'] = 'No se ha podido crear el directorio {{DOCUMENT_ROOT}}.';
+$NO_LOGS_DIR['es'] = 'No se ha podido crear el subdirectorio {{DOCUMENT_ROOT}}/logs.';
+$PORTS_FILE_NO_BACKUP['es'] = 'No se pudo crear una copia de seguridad del fichero /etc/apache2/ports.conf.';
+$PORTS_FILE_CORRUPTED['es'] = 'Error crítico al modificar el fichero /etc/apache2/ports.conf. Apache puede dejar de funcionar. Debería restaurar la copia de seguridad /etc/apache2/ports.conf.backup.';
+$HOST_NOT_CREATED['es'] = 'Error al crear el fichero /etc/apache2/sites-available/{{SERVER_NAME}}.';
+$HOST_CREATED['es'] = 'Host {{SERVER_NAME}} creado.';
+$HOST_DOES_NOT_EXIST['es'] = 'El host {{SERVER_NAME}} no existe.';
+$HOST_NO_BACKUP['es'] = 'No se pudo crear una copia de seguridad del fichero /etc/apache2/sites-available/{{SERVER_NAME}}.';
+$HOST_STILL_ACTIVATED['es'] = 'Host {{SERVER_NAME}} aún está activado.';
+$HOST_DOES_NOT_REMOVED['es'] = 'No se pudo eliminar el fichero /etc/apache2/sites-available/{{SERVER_NAME}}.';
+$HOST_DELETED['es'] = 'Host {{SERVER_NAME}} eliminado.';
 ?>
