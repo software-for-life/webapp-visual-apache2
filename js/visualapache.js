@@ -168,11 +168,11 @@ $(document).ready(function(){
 				data: {
 					server_name: $('#txtServerName').val()
 				}
-			}).done(function( json_encode_returned_data ){
+			}).done(function( json_encoded_returned_data ){
 
 			// DECODE JSON.
 
-				var object_returned_data = eval( "(" + json_encode_returned_data + ")" );
+				var object_returned_data = eval( "(" + json_encoded_returned_data + ")" );
 
 
 			// Static texts.
@@ -339,11 +339,11 @@ function new_host() {
 			wsgi_activated: ( $('#btnEnableWSGI.disabled').length != 0 ),
 			host_activated: false
 		}
-	}).done(function ( json_encode_returned_data ) {
+	}).done(function ( json_encoded_returned_data ) {
 
 	// Decode json.
 
-		var object_returned_data = eval( "(" + json_encode_returned_data + ")" );
+		var object_returned_data = eval( "(" + json_encoded_returned_data + ")" );
 
 
 
