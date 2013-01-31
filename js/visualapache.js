@@ -91,6 +91,7 @@ $(document).ready(function(){
 			);
 
 			// Fill with host data.
+			$('#txtLastName').val( event.srcElement.innerHTML );
 			$('#txtServerName').val( event.srcElement.innerHTML );
 			$('#txtListen').val(
 				document.object_list_of_hosts[event.srcElement.innerHTML].port
@@ -138,10 +139,15 @@ $(document).ready(function(){
 		$('#btnSaveHost').click(function(event) {
 
 			var title = $('#sectionNewHost header h1').html();
+
 			if(title == $SECTION_NEW_HOST_TITLE[$iso_lang]) {
+
 				new_host();
+
 			} else if(title == $SECTION_EDIT_HOST_TITLE[$iso_lang]) {
-				// TODO
+
+				edit_host();
+
 			}
 
 		});// END OF btnSaveHost click.
@@ -152,6 +158,7 @@ $(document).ready(function(){
 			$('#sectionNewHost header h1').html(
 				$SECTION_NEW_HOST_TITLE[$iso_lang]
 			);
+			$('#txtLastName').val( '' );
 			$('#txtServerName').val( '' );
 			$('#txtListen').val( '' );
 			$('#txtDocumentRoot').val( '' );
@@ -162,107 +169,7 @@ $(document).ready(function(){
 		// btnDeleteHost click.
 		$('#btnDeleteHost').click(function(event) {
 
-			$.ajax({
-				url: 'php/ajax/deleteHost.php',
-				type: 'POST',
-				data: {
-					server_name: $('#txtServerName').val()
-				}
-			}).done(function( json_encoded_returned_data ){
-
-			// DECODE JSON.
-
-				var object_returned_data = eval( "(" + json_encoded_returned_data + ")" );
-
-
-			// Static texts.
-
-				var message = object_returned_data['message'];
-
-				message = message.replace(
-					'HOST_DOES_NOT_EXIST',
-					$HOST_DOES_NOT_EXIST[$iso_lang]
-				);
-
-				message = message.replace(
-					'PORTS_FILE_NO_BACKUP',
-					$PORTS_FILE_NO_BACKUP[$iso_lang]
-				);
-
-				message = message.replace(
-					'PORTS_FILE_CORRUPTED',
-					$PORTS_FILE_CORRUPTED[$iso_lang]
-				);
-
-				message = message.replace(
-					'HOST_NO_BACKUP',
-					$HOST_NO_BACKUP[$iso_lang]
-				);
-
-				message = message.replace(
-					'HOST_STILL_ACTIVATED',
-					$HOST_STILL_ACTIVATED[$iso_lang]
-				);
-
-				message = message.replace(
-					'HOST_DOES_NOT_REMOVED',
-					$HOST_DOES_NOT_REMOVED[$iso_lang]
-				);
-
-				message = message.replace(
-					'HOST_DELETED',
-					$HOST_DELETED[$iso_lang]
-				);
-
-
-			// Host data needed.
-
-				message = message.replace(
-					'{{SERVER_NAME}}',
-					$('#txtServerName').val()
-				);
-
-
-			// Style info.
-
-				if( object_returned_data['return'] ) {
-
-					refresh_hosts_list();
-
-					$('#btnCancelHost').click();
-
-					$('#divMask label.message').css({
-						color: '#099',
-						'font-weight': 'bold'
-					});
-
-				} else if( ! object_returned_data['return'] ) {
-
-					$('#divMask label.message').css({
-						color: '#900',
-						'font-weight': 'bold'
-					});
-
-				}
-
-
-			// Show info.
-
-				$('#divMask label.message').html( message );
-
-				$('#divMask')
-					.fadeIn( 100 )
-					.delay( 3000 )
-					.fadeOut( 100, function() {
-						$('#divMask label.message').html( '' );
-						$('#divMask label.message').css({
-							color: 'black',
-							'font-weight': 'normal'
-						});
-					})
-				;
-
-			});// END OF $.ajax php/ajax/deleteHost.php.
+			delete_host();
 
 		});// END OF btnDeleteHost click.
 
@@ -327,6 +234,8 @@ function refresh_hosts_list() {
 }// END OF function refresh_hosts_list().
 
 function new_host() {
+
+	var host_created = false;
 
 	// Send new host data.
 	$.ajax({
@@ -415,6 +324,8 @@ function new_host() {
 				'font-weight': 'bold'
 			});
 
+			host_created = true;
+
 		} else if( ! object_returned_data['return'] ) {
 
 			$('#divMask label.message').css({
@@ -444,4 +355,124 @@ function new_host() {
 
 	});// END OF $.ajax php/ajax/newHost.php.
 
-}
+	return host_created;
+
+}// END OF function new_host().
+
+function delete_host() {
+
+	var host_deleted = false;
+
+	$.ajax({
+		url: 'php/ajax/deleteHost.php',
+		type: 'POST',
+		data: {
+			server_name: $('#txtLastName').val()
+		}
+	}).done(function( json_encoded_returned_data ){
+
+	// DECODE JSON.
+
+		var object_returned_data = eval( "(" + json_encoded_returned_data + ")" );
+
+
+	// Static texts.
+
+		var message = object_returned_data['message'];
+
+		message = message.replace(
+			'HOST_DOES_NOT_EXIST',
+			$HOST_DOES_NOT_EXIST[$iso_lang]
+		);
+
+		message = message.replace(
+			'PORTS_FILE_NO_BACKUP',
+			$PORTS_FILE_NO_BACKUP[$iso_lang]
+		);
+
+		message = message.replace(
+			'PORTS_FILE_CORRUPTED',
+			$PORTS_FILE_CORRUPTED[$iso_lang]
+		);
+
+		message = message.replace(
+			'HOST_NO_BACKUP',
+			$HOST_NO_BACKUP[$iso_lang]
+		);
+
+		message = message.replace(
+			'HOST_STILL_ACTIVATED',
+			$HOST_STILL_ACTIVATED[$iso_lang]
+		);
+
+		message = message.replace(
+			'HOST_DOES_NOT_REMOVED',
+			$HOST_DOES_NOT_REMOVED[$iso_lang]
+		);
+
+		message = message.replace(
+			'HOST_DELETED',
+			$HOST_DELETED[$iso_lang]
+		);
+
+
+	// Host data needed.
+
+		message = message.replace(
+			'{{SERVER_NAME}}',
+			$('#txtServerName').val()
+		);
+
+
+	// Style info.
+
+		if( object_returned_data['return'] ) {
+
+			refresh_hosts_list();
+
+			$('#btnCancelHost').click();
+
+			$('#divMask label.message').css({
+				color: '#099',
+				'font-weight': 'bold'
+			});
+
+			host_deleted = true;
+
+		} else if( ! object_returned_data['return'] ) {
+
+			$('#divMask label.message').css({
+				color: '#900',
+				'font-weight': 'bold'
+			});
+
+		}
+
+
+	// Show info.
+
+		$('#divMask label.message').html( message );
+
+		$('#divMask')
+			.fadeIn( 100 )
+			.delay( 3000 )
+			.fadeOut( 100, function() {
+				$('#divMask label.message').html( '' );
+				$('#divMask label.message').css({
+					color: 'black',
+					'font-weight': 'normal'
+				});
+			})
+		;
+
+	});// END OF $.ajax php/ajax/deleteHost.php.
+
+	return host_deleted;
+
+}// END OF function delete_host().
+
+function edit_host() {
+
+	// TODO
+
+}// END OF function edit_host().
