@@ -141,16 +141,17 @@ $(document).ready(function(){
 		// btnSaveHost click.
 		$('#btnSaveHost').click(function(event) {
 
-			var title = $('#sectionNewHost header h1').html();
+			var title = $('#sectionNewHost header h1').html(), success;
 
 			if(title == $SECTION_NEW_HOST_TITLE[$iso_lang]) {
-
-				new_host();
-
+				success = new_host();
 			} else if(title == $SECTION_EDIT_HOST_TITLE[$iso_lang]) {
+				success = edit_host();
+			}
 
-				edit_host();
-
+			if(success) {
+				refresh_hosts_list();
+				$('#btnCancelHost').click();
 			}
 
 		});// END OF btnSaveHost click.
@@ -172,8 +173,10 @@ $(document).ready(function(){
 
 		// btnDeleteHost click.
 		$('#btnDeleteHost').click(function(event) {
-
-			delete_host();
+			if(delete_host()) {
+				refresh_hosts_list();
+				$('#btnCancelHost').click();
+			}
 
 		});// END OF btnDeleteHost click.
 
@@ -317,10 +320,6 @@ function new_host() {
 
 	if( object_returned_data['return'] ) {
 
-		refresh_hosts_list();
-
-		$('#btnCancelHost').click();
-
 		$('#divMask label.message').css({
 			color: '#099',
 			'font-weight': 'bold'
@@ -427,10 +426,6 @@ function delete_host() {
 // Style info.
 
 	if( object_returned_data['return'] ) {
-
-		refresh_hosts_list();
-
-		$('#btnCancelHost').click();
 
 		$('#divMask label.message').css({
 			color: '#099',
