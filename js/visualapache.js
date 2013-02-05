@@ -239,12 +239,13 @@ function refresh_hosts_list() {
 
 function new_host() {
 
-	var host_created = false;
+	var host_created = false, ajax_request, object_returned_data, message;
 
 	// Send new host data.
-	$.ajax({
+	ajax_request = $.ajax({
 		url: 'php/ajax/newHost.php',
 		type: 'POST',
+		async: false,
 		data: {
 			server_name: $('#txtServerName').val(),
 			port: $('#txtListen').val(),
@@ -252,112 +253,106 @@ function new_host() {
 			wsgi_activated: ( $('#btnEnableWSGI.disabled').length != 0 ),
 			host_activated: false
 		}
-	}).done(function ( json_encoded_returned_data ) {
-
-	// Decode json.
-
-		var object_returned_data = eval( "(" + json_encoded_returned_data + ")" );
-
-
-
-	// Static texts.
-
-		var message = object_returned_data['message'];
-
-		message = message.replace(
-			'HOST_EXISTS',
-			$HOST_EXISTS[$iso_lang]
-		);
-
-		message = message.replace(
-			'NO_DOCUMENT_ROOT',
-			$NO_DOCUMENT_ROOT[$iso_lang]
-		);
-
-		message = message.replace(
-			'NO_LOGS_DIR',
-			$NO_LOGS_DIR[$iso_lang]
-		);
-
-		message = message.replace(
-			'PORTS_FILE_NO_BACKUP',
-			$PORTS_FILE_NO_BACKUP[$iso_lang]
-		);
-
-		message = message.replace(
-			'PORTS_FILE_CORRUPTED',
-			$PORTS_FILE_CORRUPTED[$iso_lang]
-		);
-
-		message = message.replace(
-			'HOST_NOT_CREATED',
-			$HOST_NOT_CREATED[$iso_lang]
-		);
-
-		message = message.replace(
-			'HOST_CREATED',
-			$HOST_CREATED[$iso_lang]
-		);
-
-
-
-	// Host data needed.
-
-		message = message.replace(
-			'{{SERVER_NAME}}',
-			$('#txtServerName').val()
-		);
-
-		message = message.replace(
-			'{{DOCUMENT_ROOT}}',
-			$('#txtDocumentRoot').val()
-		);
-
-
-
-	// Style info.
-
-		if( object_returned_data['return'] ) {
-
-			refresh_hosts_list();
-
-			$('#btnCancelHost').click();
-
-			$('#divMask label.message').css({
-				color: '#099',
-				'font-weight': 'bold'
-			});
-
-			host_created = true;
-
-		} else if( ! object_returned_data['return'] ) {
-
-			$('#divMask label.message').css({
-				color: '#900',
-				'font-weight': 'bold'
-			});
-
-		}
-
-
-
-	// Show info.
-
-		$('#divMask label.message').html( message );
-
-		$('#divMask')
-			.fadeIn( 100 )
-			.delay( 3000 )
-			.fadeOut( 100, function() {
-				$('#divMask label.message').html( '' );
-				$('#divMask label.message').css({
-					color: 'black',
-					'font-weight': 'normal'
-				});
-			})
-		;
-
 	});// END OF $.ajax php/ajax/newHost.php.
+
+// Decode json.
+
+	object_returned_data = eval( "(" + ajax_request.responseText + ")" );
+
+
+// Static texts.
+
+	message = object_returned_data['message'];
+
+	message = message.replace(
+		'HOST_EXISTS',
+		$HOST_EXISTS[$iso_lang]
+	);
+
+	message = message.replace(
+		'NO_DOCUMENT_ROOT',
+		$NO_DOCUMENT_ROOT[$iso_lang]
+	);
+
+	message = message.replace(
+		'NO_LOGS_DIR',
+		$NO_LOGS_DIR[$iso_lang]
+	);
+
+	message = message.replace(
+		'PORTS_FILE_NO_BACKUP',
+		$PORTS_FILE_NO_BACKUP[$iso_lang]
+	);
+
+	message = message.replace(
+		'PORTS_FILE_CORRUPTED',
+		$PORTS_FILE_CORRUPTED[$iso_lang]
+	);
+
+	message = message.replace(
+		'HOST_NOT_CREATED',
+		$HOST_NOT_CREATED[$iso_lang]
+	);
+
+	message = message.replace(
+		'HOST_CREATED',
+		$HOST_CREATED[$iso_lang]
+	);
+
+
+// Host data needed.
+
+	message = message.replace(
+		'{{SERVER_NAME}}',
+		$('#txtServerName').val()
+	);
+
+	message = message.replace(
+		'{{DOCUMENT_ROOT}}',
+		$('#txtDocumentRoot').val()
+	);
+
+
+// Style info.
+
+	if( object_returned_data['return'] ) {
+
+		refresh_hosts_list();
+
+		$('#btnCancelHost').click();
+
+		$('#divMask label.message').css({
+			color: '#099',
+			'font-weight': 'bold'
+		});
+
+		host_created = true;
+
+	} else if( ! object_returned_data['return'] ) {
+
+		$('#divMask label.message').css({
+			color: '#900',
+			'font-weight': 'bold'
+		});
+
+	}
+
+
+// Show info.
+
+	$('#divMask label.message').html( message );
+
+	$('#divMask')
+		.fadeIn( 100 )
+		.delay( 3000 )
+		.fadeOut( 100, function() {
+			$('#divMask label.message').html( '' );
+			$('#divMask label.message').css({
+				color: 'black',
+				'font-weight': 'normal'
+			});
+		})
+	;
 
 	return host_created;
 
