@@ -91,7 +91,7 @@ $(document).ready(function(){
 			);
 
 			// Fill with host data.
-			$('#txtLastName').val( event.srcElement.innerHTML );
+			$('#txtOldServerName').val( event.srcElement.innerHTML );
 			$('#txtServerName').val( event.srcElement.innerHTML );
 			$('#txtListen').val(
 				document.object_list_of_hosts[event.srcElement.innerHTML].port
@@ -162,7 +162,7 @@ $(document).ready(function(){
 			$('#sectionNewHost header h1').html(
 				$SECTION_NEW_HOST_TITLE[$iso_lang]
 			);
-			$('#txtLastName').val( '' );
+			$('#txtOldServerName').val( '' );
 			$('#txtServerName').val( '' );
 			$('#txtListen').val( '' );
 			$('#txtOldDocumentRoot').val( '' );
@@ -366,7 +366,7 @@ function delete_host() {
 		type: 'POST',
 		async: false,
 		data: {
-			server_name: $('#txtLastName').val()
+			server_name: $('#txtOldServerName').val()
 		}
 	});// END OF $.ajax php/ajax/deleteHost.php.
 
