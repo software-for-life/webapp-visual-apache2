@@ -53,4 +53,5 @@ $HOST_NO_BACKUP['en'] = 'Could not create backup of /etc/apache2/sites-available
 $HOST_STILL_ACTIVATED['en'] = 'Host {{SERVER_NAME}} still activated.';
 $HOST_DOES_NOT_REMOVED['en'] = 'Could not delete /etc/apache2/sites-available/{{SERVER_NAME}}.';
 $HOST_DELETED['en'] = 'Host {{SERVER_NAME}} deleted.';
+$HOST_MODIFIED['en'] = 'Host {{OLD_SERVER_NAME}} modified as {{NEW_SERVER_NAME}}.';
 ?>

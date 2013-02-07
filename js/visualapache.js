@@ -96,9 +96,6 @@ $(document).ready(function(){
 			$('#txtListen').val(
 				document.object_list_of_hosts[event.srcElement.innerHTML].port
 			);
-			$('#txtOldDocumentRoot').val(
-				document.object_list_of_hosts[event.srcElement.innerHTML].document_root
-			);
 			$('#txtDocumentRoot').val(
 				document.object_list_of_hosts[event.srcElement.innerHTML].document_root
 			);
@@ -149,10 +146,22 @@ $(document).ready(function(){
 				success = edit_host();
 			}
 
-			if(success) {
-				refresh_hosts_list();
-				$('#btnCancelHost').click();
-			}
+		// Show info.
+
+			$('#divMask')
+				.fadeIn( 100 )
+				.delay( 3000 )
+				.fadeOut( 100, function() {
+					$('#divMask label.message').html( '' );
+					$('#divMask label.message').css({
+						color: 'black',
+						'font-weight': 'normal'
+					});
+				})
+			;
+
+			refresh_hosts_list();
+			$('#btnCancelHost').click();
 
 		});// END OF btnSaveHost click.
 
@@ -165,7 +174,6 @@ $(document).ready(function(){
 			$('#txtOldServerName').val( '' );
 			$('#txtServerName').val( '' );
 			$('#txtListen').val( '' );
-			$('#txtOldDocumentRoot').val( '' );
 			$('#txtDocumentRoot').val( '' );
 			$('#btnDisableWSGI').click();
 			$('#btnDeleteHost').fadeOut(0);
@@ -173,10 +181,23 @@ $(document).ready(function(){
 
 		// btnDeleteHost click.
 		$('#btnDeleteHost').click(function(event) {
-			if(delete_host()) {
-				refresh_hosts_list();
-				$('#btnCancelHost').click();
-			}
+
+		// Show info.
+
+			$('#divMask')
+				.fadeIn( 100 )
+				.delay( 3000 )
+				.fadeOut( 100, function() {
+					$('#divMask label.message').html( '' );
+					$('#divMask label.message').css({
+						color: 'black',
+						'font-weight': 'normal'
+					});
+				})
+			;
+
+			refresh_hosts_list();
+			$('#btnCancelHost').click();
 
 		});// END OF btnDeleteHost click.
 
@@ -336,22 +357,7 @@ function new_host() {
 
 	}
 
-
-// Show info.
-
 	$('#divMask label.message').html( message );
-
-	$('#divMask')
-		.fadeIn( 100 )
-		.delay( 3000 )
-		.fadeOut( 100, function() {
-			$('#divMask label.message').html( '' );
-			$('#divMask label.message').css({
-				color: 'black',
-				'font-weight': 'normal'
-			});
-		})
-	;
 
 	return host_created;
 
@@ -443,22 +449,7 @@ function delete_host() {
 
 	}
 
-
-// Show info.
-
 	$('#divMask label.message').html( message );
-
-	$('#divMask')
-		.fadeIn( 100 )
-		.delay( 3000 )
-		.fadeOut( 100, function() {
-			$('#divMask label.message').html( '' );
-			$('#divMask label.message').css({
-				color: 'black',
-				'font-weight': 'normal'
-			});
-		})
-	;
 
 	return host_deleted;
 
@@ -466,6 +457,64 @@ function delete_host() {
 
 function edit_host() {
 
-	// TODO
+	var host_modified = false, message;
+
+	if($('#txtOldServerName').val() != $('#txtServerName').val()
+	&& document.object_list_of_hosts[$('#txtServerName').val()]) {
+
+		message = $HOST_EXISTS[$iso_lang];
+
+	} else {
+
+		if(delete_host()) {
+
+			if(new_host()) {
+
+				host_modified = true;
+
+				// Static text.
+				message = $HOST_MODIFIED[$iso_lang];
+
+
+			// Host data needed.
+
+				message = message.replace(
+					'{{OLD_SERVER_NAME}}',
+					$('#txtOldServerName').val()
+				);
+
+				message = message.replace(
+					'{{NEW_SERVER_NAME}}',
+					$('#txtServerName').val()
+				);
+
+
+			// Style info.
+
+				if( host_modified ) {
+
+					$('#divMask label.message').css({
+						color: '#099',
+						'font-weight': 'bold'
+					});
+
+				} else if( !host_modified ) {
+
+					$('#divMask label.message').css({
+						color: '#900',
+						'font-weight': 'bold'
+					});
+
+				}
+
+				$('#divMask label.message').html( message );
+
+			}// END OF if(new_host())
+
+		}// END OF if(delete_host())
+
+	}// END OF else -> ($('#txtOldServerName') != $('#txtServerName') && document.object_list_of_hosts[$('#txtServerName')])
+
+	return host_modified;
 
 }// END OF function edit_host().

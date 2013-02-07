@@ -53,4 +53,5 @@ $HOST_NO_BACKUP['es'] = 'No se pudo crear una copia de seguridad del fichero /et
 $HOST_STILL_ACTIVATED['es'] = 'Host {{SERVER_NAME}} aún está activado.';
 $HOST_DOES_NOT_REMOVED['es'] = 'No se pudo eliminar el fichero /etc/apache2/sites-available/{{SERVER_NAME}}.';
 $HOST_DELETED['es'] = 'Host {{SERVER_NAME}} eliminado.';
+$HOST_MODIFIED['es'] = 'Host {{OLD_SERVER_NAME}} modificado como {{NEW_SERVER_NAME}}.';
 ?>
