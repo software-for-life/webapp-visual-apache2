@@ -208,6 +208,9 @@ $(document).ready(function(){
 		// btnDeleteHost click.
 		$('#btnDeleteHost').click(function(event) {
 
+			delete_host();
+
+
 		// Show info.
 
 			$('#divMask')
