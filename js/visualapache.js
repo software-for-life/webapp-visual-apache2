@@ -108,6 +108,32 @@ $(document).ready(function(){
 		}// END OF List item click.
 
 
+		// btnEnableHost click.
+		document.btnEnableHost_click = function(e) {
+
+			var server_name;
+
+			server_name = $(e.srcElement).parent().parent().find('td:first').html();
+
+			enable_host(server_name);
+
+			// Show info.
+			$('#divMask')
+				.fadeIn( 100 )
+				.delay( 3000 )
+				.fadeOut( 100, function() {
+					$('#divMask label.message').html( '' );
+					$('#divMask label.message').css({
+						color: 'black',
+						'font-weight': 'normal'
+					});
+				})
+			;
+
+			refresh_hosts_list();
+			$('#btnCancelHost').click();
+
+		}// END OF btnEnableHost click.
 
 	// New hosts.
 
@@ -242,7 +268,7 @@ function refresh_hosts_list() {
 				'<td onclick="document.list_item_click( event );">' + host_name + '</td>' +
 				'<td style="text-align:right;">' + document.object_list_of_hosts[host_name].port + '</td>' +
 				'<td>' +
-					'<button id="btnEnableHost" class="blue' + btnEnableHost_disabled + '">' +
+					'<button id="btnEnableHost" class="blue' + btnEnableHost_disabled + '" onclick="document.btnEnableHost_click( event );">' +
 						'' + $BTN_ENABLE[$iso_lang] + '' +
 					'</button>' +
 				'</td>' +
@@ -518,3 +544,66 @@ function edit_host() {
 	return host_modified;
 
 }// END OF function edit_host().
+
+function enable_host(server_name) {
+
+	var host_enabled = false, ajax_request, object_returned_data, message;
+
+	ajax_request = $.ajax({
+		url: 'php/ajax/enableHost.php',
+		type: 'POST',
+		async: false,
+		data: {
+			server_name: server_name
+		}
+	});// END OF $.ajax 'php/ajax/enableHost.php'.
+
+	// Decode JSON.
+	object_returned_data = eval( "(" + ajax_request.responseText + ")" );
+
+	console.info(object_returned_data['message']);
+
+
+// Static text.
+
+	if(object_returned_data['return'] == 0) {
+
+		message = $HOST_ENABLED[$iso_lang];
+
+		host_enabled = true;
+
+	}
+
+
+// Host data needed.
+
+	message = message.replace(
+		'{{SERVER_NAME}}',
+		server_name
+	);
+
+
+// Style info.
+
+	if( host_enabled ) {
+
+		$('#divMask label.message').css({
+			color: '#099',
+			'font-weight': 'bold'
+		});
+
+	} else {
+
+		$('#divMask label.message').css({
+			color: '#900',
+			'font-weight': 'bold'
+		});
+
+	}
+
+	$('#divMask label.message').html( message );
+
+
+	return host_enabled;
+
+}// END OF function enable_host(server_name).

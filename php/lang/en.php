@@ -44,8 +44,6 @@ $BTN_DELETE_HOST['en'] = 'Delete';
 $HOST_EXISTS['en'] = 'Host {{SERVER_NAME}} exists.';
 $NO_DOCUMENT_ROOT['en'] = 'Could not create {{DOCUMENT_ROOT}} dir.';
 $NO_LOGS_DIR['en'] = 'Could not create {{DOCUMENT_ROOT}}/logs dir.';
-$PORTS_FILE_NO_BACKUP['en'] = 'Could not create backup of /etc/apache2/ports.conf.';
-$PORTS_FILE_CORRUPTED['en'] = 'Fatal error. Maybe /etc/apache2/ports.conf has been corrupted. Apache could stop working. You should restore from /etc/apache2/ports.conf.backup.';
 $HOST_NOT_CREATED['en'] = 'Could not create /etc/apache2/sites-available/{{SERVER_NAME}}.';
 $HOST_CREATED['en'] = 'Host {{SERVER_NAME}} created.';
 $HOST_DOES_NOT_EXIST['en'] = 'Host {{SERVER_NAME}} does not exist.';
@@ -54,4 +52,7 @@ $HOST_STILL_ACTIVATED['en'] = 'Host {{SERVER_NAME}} still activated.';
 $HOST_DOES_NOT_REMOVED['en'] = 'Could not delete /etc/apache2/sites-available/{{SERVER_NAME}}.';
 $HOST_DELETED['en'] = 'Host {{SERVER_NAME}} deleted.';
 $HOST_MODIFIED['en'] = 'Host {{OLD_SERVER_NAME}} modified as {{NEW_SERVER_NAME}}.';
+$PORTS_FILE_NO_BACKUP['en'] = 'Could not create backup of /etc/apache2/ports.conf.';
+$PORTS_FILE_CORRUPTED['en'] = 'Fatal error. Maybe /etc/apache2/ports.conf has been corrupted. Apache could stop working. You should restore from /etc/apache2/ports.conf.backup.';
+$HOST_ENABLED['en'] = 'Host {{SERVER_NAME}} enabled.';
 ?>
