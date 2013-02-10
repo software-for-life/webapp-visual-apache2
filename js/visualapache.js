@@ -191,6 +191,36 @@ $(document).ready(function(){
 
 		});// END OF btnSaveHost click.
 
+		// btnSaveEnableHost click.
+		$('#btnSaveEnableHost').click(function(e) {
+
+			var title = $('#sectionNewHost header h1').html(), success;
+
+			if(title == $SECTION_NEW_HOST_TITLE[$iso_lang]) {
+				success = new_host() && enable_host($('#txtServerName').val());
+			} else if(title == $SECTION_EDIT_HOST_TITLE[$iso_lang]) {
+				success = edit_host() && enable_host($('#txtServerName').val());
+			}
+
+		// Show info.
+
+			$('#divMask')
+				.fadeIn( 100 )
+				.delay( 3000 )
+				.fadeOut( 100, function() {
+					$('#divMask label.message').html( '' );
+					$('#divMask label.message').css({
+						color: 'black',
+						'font-weight': 'normal'
+					});
+				})
+			;
+
+			refresh_hosts_list();
+			$('#btnCancelHost').click();
+
+		});// END OF btnSaveEnableHost click.
+
 		// btnCancelHost click.
 		$('#btnCancelHost').click(function(event) {
 
