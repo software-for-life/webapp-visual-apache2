@@ -24,6 +24,7 @@
 // GLOBAL VARIABLES.
 
 	document.object_list_of_hosts;
+	document.object_list_of_mods;
 
 
 
@@ -35,6 +36,7 @@ $(document).ready(function(){
 	$("#sectionMods").fadeOut(0);
 
 	refresh_hosts_list();
+	refresh_mods_list();
 
 
 
@@ -341,13 +343,67 @@ function refresh_hosts_list() {
 				'</td>' +
 			'</tr>\n';
 
-		}// END OF for( var host_name in object_hosts_list )
+		}// END OF for( var host_name in document.object_list_of_hosts )
 
 		$('#tableHostList').html( lines );
 
 	});// END OF $.ajax php/ajax/getHosts.php
 
 }// END OF function refresh_hosts_list().
+
+
+function refresh_mods_list() {
+
+	// Get mods list.
+	$.ajax({
+		url: 'php/ajax/getMods.php',
+		success: function( json_encoded_mods_list ) {
+
+			var lines = '';
+
+			// Decode json.
+			document.object_list_of_mods = eval( "(" + json_encoded_mods_list + ")" );
+
+			for( var mod_name in document.object_list_of_mods ) {
+
+				// Get mod state.
+				if( document.object_list_of_mods[mod_name].mod_activated ) {
+
+					btnEnableMod_disabled = ' disabled';
+					btnDisableMod_disabled = '';
+
+				} else {
+
+					btnEnableMod_disabled = '';
+					btnDisableMod_disabled = ' disabled';
+
+				}
+
+				// Show html.
+				lines += '' +
+				'<tr>' +
+					'<td>' + mod_name + '</td>' +
+					'<td>' +
+						'<button id="btnEnableMod" class="blue' + btnEnableMod_disabled + '">' +
+							'' + $BTN_ENABLE[$iso_lang] + '' +
+						'</button>' +
+					'</td>' +
+					'<td>' +
+						'<button id="btnDisableMod" class="red' + btnDisableMod_disabled + '">' +
+							'' + $BTN_DISABLE[$iso_lang] + '' +
+						'</button>' +
+					'</td>' +
+				'</tr>\n';
+
+			}// END OF for( var mod_name in document.object_list_of_mods )
+
+			$('#tableModList').html( lines );
+
+		}
+	});// END OF $.ajax php/ajax/getMods.php
+
+}// END OF function refresh_mods_list()
+
 
 function new_host() {
 
