@@ -50,7 +50,9 @@ if($return_data['command_output']['return'] == 0) {
 
 	while ( ($element = $dir_sites_available->read()) !== false ) {
 
-		if( is_file( "/etc/apache2/sites-available/".$element ) ) {
+		if((preg_match('/.backup$/', $element) != 1
+		&& preg_match('/~$/', $element) != 1)
+		&& is_file( '/etc/apache2/sites-available/'.$element ) ) {
 
 			// Read file.
 			$file = file( "/etc/apache2/sites-available/".$element );
