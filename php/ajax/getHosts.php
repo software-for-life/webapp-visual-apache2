@@ -31,7 +31,9 @@
 
 	while ( ($element = $dir_sites_available->read()) !== false ) {
 
-		if( is_file( '/etc/apache2/sites-available/'.$element ) ) {
+		if((preg_match('/.backup$/', $element) != 1
+		&& preg_match('/~$/', $element) != 1)
+		&& is_file( '/etc/apache2/sites-available/'.$element ) ) {
 
 			// ServerName.
 	   		$hosts_list[$element] = array();
@@ -77,9 +79,17 @@
 
 		// GET host state (Enable / Disable).
 
-			$hosts_list[$element]['host_activated'] = is_file(
-				'/etc/apache2/sites-enabled/'.$element
-			);
+			if($element == 'default'
+			&& is_file('/etc/apache2/sites-enabled/000-'.$element)
+			|| is_file('/etc/apache2/sites-enabled/'.$element)) {
+
+				$hosts_list[$element]['host_activated'] = true;
+
+			} else {
+
+				$hosts_list[$element]['host_activated'] = false;
+
+			}
 
 		}// END OF if( is_file( '/etc/apache2/sites-available/'.$element ) )
 
