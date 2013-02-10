@@ -99,7 +99,7 @@ if( !$is_listening ) {
 
 // ENABLE HOST.
 
-	else if(is_listening) {
+	if(is_listening) {
 
 		exec(
 			'/usr/sbin/a2ensite '.$_POST['server_name'].' 2>&1',
