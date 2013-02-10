@@ -363,16 +363,6 @@ function new_host() {
 	);
 
 	message = message.replace(
-		'PORTS_FILE_NO_BACKUP',
-		$PORTS_FILE_NO_BACKUP[$iso_lang]
-	);
-
-	message = message.replace(
-		'PORTS_FILE_CORRUPTED',
-		$PORTS_FILE_CORRUPTED[$iso_lang]
-	);
-
-	message = message.replace(
 		'HOST_NOT_CREATED',
 		$HOST_NOT_CREATED[$iso_lang]
 	);
@@ -594,18 +584,28 @@ function enable_host(server_name) {
 	// Decode JSON.
 	object_returned_data = eval( "(" + ajax_request.responseText + ")" );
 
-	console.info(object_returned_data['message']);
+	// Show command output in console.
+	console.info(object_returned_data['command_output']['message']);
 
 
-// Static text.
+// STATIC TEXT.
 
-	if(object_returned_data['return'] == 0) {
+	message = object_returned_data['message'];
 
-		message = $HOST_ENABLED[$iso_lang];
+	message = message.replace(
+		'PORTS_FILE_NO_BACKUP',
+		$PORTS_FILE_NO_BACKUP[$iso_lang]
+	);
 
-		host_enabled = true;
+	message = message.replace(
+		'PORTS_FILE_CORRUPTED',
+		$PORTS_FILE_CORRUPTED[$iso_lang]
+	);
 
-	}
+	message = message.replace(
+		'HOST_ENABLED',
+		$HOST_ENABLED[$iso_lang]
+	);
 
 
 // Host data needed.
@@ -618,12 +618,14 @@ function enable_host(server_name) {
 
 // Style info.
 
-	if( host_enabled ) {
+	if( object_returned_data['return'] ) {
 
 		$('#divMask label.message').css({
 			color: '#099',
 			'font-weight': 'bold'
 		});
+
+		host_enabled = true;
 
 	} else {
 

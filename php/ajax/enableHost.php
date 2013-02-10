@@ -24,7 +24,8 @@
 
 $return_data = array(
 	'return' => false,
-	'message' => ''
+	'message' => '',
+	'command_output' => array()
 );
 
 // Get port.
@@ -103,9 +104,17 @@ if( !$is_listening ) {
 
 		exec(
 			'/usr/sbin/a2ensite '.$_POST['server_name'].' 2>&1',
-			$return_data['message'],
-			$return_data['return']
+			$return_data['command_output']['message'],
+			$return_data['command_output']['return']
 		);
+
+		if($return_data['command_output']['return'] == 0) {
+
+			$return_data['message'] = 'HOST_ENABLED';
+
+			$return_data['return'] = true;
+
+		}
 
 	}
 
