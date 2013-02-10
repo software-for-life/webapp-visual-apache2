@@ -613,7 +613,10 @@ function enable_host(server_name) {
 	// Decode JSON.
 	object_returned_data = eval( "(" + ajax_request.responseText + ")" );
 
-	// Show command output in console.
+	// Show command output in the console.
+	console.info(
+		'a2ensite: ' +	object_returned_data['command_output']['return']
+	);
 	console.info(object_returned_data['command_output']['message']);
 
 
@@ -689,7 +692,10 @@ function disable_host(server_name) {
 	// Decode JSON.
 	object_returned_data = eval( "(" + ajax_request.responseText + ")" );
 
-	// Show command output in console.
+	// Show command output in the console.
+	console.info(
+		'a2dissite: ' +	object_returned_data['command_output']['return']
+	);
 	console.info(object_returned_data['command_output']['message']);
 
 
