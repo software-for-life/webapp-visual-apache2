@@ -55,4 +55,5 @@ $HOST_MODIFIED['en'] = 'Host {{OLD_SERVER_NAME}} modified as {{NEW_SERVER_NAME}}
 $PORTS_FILE_NO_BACKUP['en'] = 'Could not create backup of /etc/apache2/ports.conf.';
 $PORTS_FILE_CORRUPTED['en'] = 'Fatal error. Maybe /etc/apache2/ports.conf has been corrupted. Apache could stop working. You should restore from /etc/apache2/ports.conf.backup.';
 $HOST_ENABLED['en'] = 'Host {{SERVER_NAME}} enabled.';
+$HOST_DISABLED['en'] = 'Host {{SERVER_NAME}} disabled.';
 ?>

@@ -135,6 +135,35 @@ $(document).ready(function(){
 
 		}// END OF btnEnableHost click.
 
+
+		// btnDisableHost click.
+		document.btnDisableHost_click = function(e) {
+
+			var server_name;
+
+			server_name = $(e.srcElement).parent().parent().find('td:first').html();
+
+			disable_host(server_name);
+
+			// Show info.
+			$('#divMask')
+				.fadeIn( 100 )
+				.delay( 3000 )
+				.fadeOut( 100, function() {
+					$('#divMask label.message').html( '' );
+					$('#divMask label.message').css({
+						color: 'black',
+						'font-weight': 'normal'
+					});
+				})
+			;
+
+			refresh_hosts_list();
+			$('#btnCancelHost').click();
+
+		}// END OF btnDisableHost click.
+
+
 	// New hosts.
 
 		// btnEnableWSGI click.
@@ -306,7 +335,7 @@ function refresh_hosts_list() {
 					'</button>' +
 				'</td>' +
 				'<td>' +
-					'<button id="btnDisableHost" class="red' + btnDisableHost_disabled + '">' +
+					'<button id="btnDisableHost" class="red' + btnDisableHost_disabled + '" onclick="document.btnDisableHost_click( event );">' +
 						'' + $BTN_DISABLE[$iso_lang] + '' +
 					'</button>' +
 				'</td>' +
@@ -642,3 +671,80 @@ function enable_host(server_name) {
 	return host_enabled;
 
 }// END OF function enable_host(server_name).
+
+
+function disable_host(server_name) {
+
+	var host_disabled = false, ajax_request, object_returned_data, message;
+
+	ajax_request = $.ajax({
+		url: 'php/ajax/disableHost.php',
+		type: 'POST',
+		async: false,
+		data: {
+			server_name: server_name
+		}
+	});// END OF $.ajax 'php/ajax/disableHost.php'.
+
+	// Decode JSON.
+	object_returned_data = eval( "(" + ajax_request.responseText + ")" );
+
+	// Show command output in console.
+	console.info(object_returned_data['command_output']['message']);
+
+
+// STATIC TEXT.
+
+	message = object_returned_data['message'];
+
+	message = message.replace(
+		'PORTS_FILE_NO_BACKUP',
+		$PORTS_FILE_NO_BACKUP[$iso_lang]
+	);
+
+	message = message.replace(
+		'PORTS_FILE_CORRUPTED',
+		$PORTS_FILE_CORRUPTED[$iso_lang]
+	);
+
+	message = message.replace(
+		'HOST_DISABLED',
+		$HOST_DISABLED[$iso_lang]
+	);
+
+
+// Host data needed.
+
+	message = message.replace(
+		'{{SERVER_NAME}}',
+		server_name
+	);
+
+
+// Style info.
+
+	if( object_returned_data['return'] ) {
+
+		$('#divMask label.message').css({
+			color: '#099',
+			'font-weight': 'bold'
+		});
+
+		host_disabled = true;
+
+	} else {
+
+		$('#divMask label.message').css({
+			color: '#900',
+			'font-weight': 'bold'
+		});
+
+	}
+
+	$('#divMask label.message').html( message );
+
+
+	return host_disabled;
+
+}// END OF function disable_host(server_name).
+

@@ -55,4 +55,5 @@ $HOST_MODIFIED['es'] = 'Host {{OLD_SERVER_NAME}} modificado como {{NEW_SERVER_NA
 $PORTS_FILE_NO_BACKUP['es'] = 'No se pudo crear una copia de seguridad del fichero /etc/apache2/ports.conf.';
 $PORTS_FILE_CORRUPTED['es'] = 'Error crítico al modificar el fichero /etc/apache2/ports.conf. Apache puede dejar de funcionar. Debería restaurar la copia de seguridad /etc/apache2/ports.conf.backup.';
 $HOST_ENABLED['es'] = 'Host {{SERVER_NAME}} activado.';
+$HOST_DISABLED['es'] = 'Host {{SERVER_NAME}} desactivado.';
 ?>

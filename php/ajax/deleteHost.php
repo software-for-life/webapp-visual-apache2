@@ -41,143 +41,42 @@ $return_data = array(
 
 	else {
 
-	// TEST IF PORT IS USELESS.
+		// Make a backup of the file.
+		$backup_created = copy(
+			'/etc/apache2/sites-available/'.$_POST['server_name'],
+			'/etc/apache2/sites-available/'.$_POST['server_name'].'.backup'
+		);
 
-		$stuff_of_port_done = false;
-		$ports = array();
+		if( ! $backup_created )
+			$return_data['message'] = 'HOST_NO_BACKUP';
 
-		// Search used ports.
+		else if( $backup_created ) {
 
-		$dir_sites_available = dir("/etc/apache2/sites-available");
+			if( is_file( '/etc/apache2/sites-enabled/'.$_POST['server_name'] ) )
 
-		while ( ($element = $dir_sites_available->read()) !== false ) {
+				$return_data['message'] = 'HOST_STILL_ACTIVATED';
 
-			if( is_file( "/etc/apache2/sites-available/".$element ) ) {
+			else { // Host is deactivated.
 
-				// Read file.
-				$file = file( "/etc/apache2/sites-available/".$element );
+			// REMOVE FILE OF HOST.
 
-				// Extract port line.
-				$port_line = implode( preg_grep( "/^<VirtualHost .+:/", $file ) );
+				if( ! unlink( '/etc/apache2/sites-available/'.$_POST['server_name'] ) )
 
-				// Extract port.
+					$return_data['message'] = 'HOST_DOES_NOT_REMOVED';
 
-				$start_pos = strpos( $port_line, ':' ) + 1;
+				else { // Host is removed.
 
-				$end_pos = strpos( $port_line, '>' );
+					$return_data['message'] = 'HOST_DELETED';
 
-				$port = substr(
-					$port_line,
-					$start_pos,
-					$end_pos - $start_pos
-				);
+					$return_data['return'] = true;
 
-				// Found port of server_name.
-				if( $element == $_POST['server_name'] )
-					$deleting_port = $port;
+				}// END OF Host is removed.
 
-				// Count users of this port.
-				if( ! isset( $ports[$port] ) )
-					$ports[$port] = 0;
-				$ports[$port] ++;
+			}// END OF Host is deactivated.
 
-			}// END OF if( is_file( $element )
-
-		}// END OF while ( ($element = $dir_sites_available->read()) !== false )
-
-		$dir_sites_available->close();
-
-		if( $ports[$deleting_port] > 1 )
-			$stuff_of_port_done = true;
-			
-		// Delete port if it is useless.
-		else if( $ports[$deleting_port] <= 1 ) {
-
-			// Make a backup of the ports.conf file.
-			$backup_created = copy(
-				'/etc/apache2/ports.conf',
-				'/etc/apache2/ports.conf.backup'
-			);
-
-			if( ! $backup_created )
-				$return_data['message'] = 'PORTS_FILE_NO_BACKUP';
-
-			// Write changes.
-			else if( $backup_created ) {
-
-				// Delete line of useless port.
-				$lines = implode(
-					'',
-					preg_grep(
-						"/^Listen $deleting_port$/",
-						file( '/etc/apache2/ports.conf' ),
-						PREG_GREP_INVERT
-					)
-				);
-
-				// Open ports file.
-				$resource_ports_file = fopen(
-					'/etc/apache2/ports.conf',
-					'w'
-				);
-
-				// Write all the lines.
-				if( ! fwrite( $resource_ports_file, $lines ) )
-					$return_data['message'] = 'PORTS_FILE_CORRUPTED';
-				else
-					$stuff_of_port_done = true;
-
-				fclose( $resource_ports_file );
-
-			}// END OF else if( $backup_created )
-
-		}// END OF else if( $ports[$deleting_port] <= 1 ).
-
-		if( $stuff_of_port_done ) {
-
-		// DEACTIVATE HOST.
-
-			// Make a backup of the file.
-			$backup_created = copy(
-				'/etc/apache2/sites-available/'.$_POST['server_name'],
-				'/etc/apache2/sites-available/'.$_POST['server_name'].'.backup'
-			);
-
-			if( ! $backup_created )
-				$return_data['message'] = 'HOST_NO_BACKUP';
-
-			else if( $backup_created ) {
-
-				if( is_file( '/etc/apache2/sites-enabled/'.$_POST['server_name'] )
-				and ! unlink( '/etc/apache2/sites-enabled/'.$_POST['server_name'] ) )
-
-					$return_data['message'] = 'HOST_STILL_ACTIVATED';
-
-
-				else { // Host is deactivated.
-
-				// REMOVE FILE OF HOST.
-
-					if( ! unlink( '/etc/apache2/sites-available/'.$_POST['server_name'] ) )
-
-						$return_data['message'] = 'HOST_DOES_NOT_REMOVED';
-
-
-					else { // Host is removed.
-
-						$return_data['return'] = true;
-						$return_data['message'] = 'HOST_DELETED';
-
-					}// END OF Host is removed.
-
-				}// END OF Host is deactivated.
-
-			}// END OF else if( $backup_created )
-
-		}// END OF if( $stuff_of_port_done )
+		}// END OF else if( $backup_created )
 
 	}// END OF else: OTHER STUFF.
-
 
 
 // RETURN DATA.
