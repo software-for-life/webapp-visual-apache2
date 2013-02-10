@@ -27,14 +27,24 @@ $return_data = array(
 	'message' => ''
 );
 
+// Get port.
+$host_file = file( '/etc/apache2/sites-available/'.$_POST['server_name'] );
+$port_line = implode( preg_grep( "/<VirtualHost*/", $host_file ) );
+$start_pos = strpos( $port_line, ':' ) + 1;
+$end_pos = strpos( $port_line, '>' );
+$port = substr(
+	$port_line,
+	$start_pos,
+	$end_pos - $start_pos
+);
+
 
 // Read ports configuration file of apache2.
 $ports_file = file( '/etc/apache2/ports.conf' );
-
 // Test if apache is listening on this port.
 $is_listening = ( count(
 	preg_grep(
-		"/^Listen ".$_POST['port']."$/",
+		"/^Listen ".$port."$/",
 		$ports_file
 	)
 ) != 0 );
@@ -63,7 +73,7 @@ if( !$is_listening ) {
 		// Append the new port.
 		$lines = preg_replace(
 			"/\\nListen /",
-			"\nListen ".$_POST['port']."\nListen ",
+			"\nListen ".$port."\nListen ",
 			$lines,
 			1
 		);
@@ -89,7 +99,7 @@ if( !$is_listening ) {
 
 // ENABLE HOST.
 
-	if(is_listening) {
+	else if(is_listening) {
 
 		exec(
 			'/usr/sbin/a2ensite '.$_POST['server_name'].' 2>&1',
