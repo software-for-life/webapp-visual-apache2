@@ -56,4 +56,6 @@ $PORTS_FILE_NO_BACKUP['es'] = 'No se pudo crear una copia de seguridad del fiche
 $PORTS_FILE_CORRUPTED['es'] = 'Error crítico al modificar el fichero /etc/apache2/ports.conf. Apache puede dejar de funcionar. Debería restaurar la copia de seguridad /etc/apache2/ports.conf.backup.';
 $HOST_ENABLED['es'] = 'Host {{SERVER_NAME}} activado.';
 $HOST_DISABLED['es'] = 'Host {{SERVER_NAME}} desactivado.';
+$MOD_NOT_ENABLED['es'] = 'No se pudo activar el módulo {{MOD_NAME}}.';
+$MOD_ENABLED['es'] = 'Módulo {{MOD_NAME}} activado.';
 ?>

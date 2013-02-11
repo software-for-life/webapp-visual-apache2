@@ -56,4 +56,6 @@ $PORTS_FILE_NO_BACKUP['en'] = 'Could not create backup of /etc/apache2/ports.con
 $PORTS_FILE_CORRUPTED['en'] = 'Fatal error. Maybe /etc/apache2/ports.conf has been corrupted. Apache could stop working. You should restore from /etc/apache2/ports.conf.backup.';
 $HOST_ENABLED['en'] = 'Host {{SERVER_NAME}} enabled.';
 $HOST_DISABLED['en'] = 'Host {{SERVER_NAME}} disabled.';
+$MOD_NOT_ENABLED['en'] = 'Could not enable the {{MOD_NAME}} module.';
+$MOD_ENABLED['en'] = 'Module {{MOD_NAME}} enabled.';
 ?>

@@ -294,6 +294,34 @@ $(document).ready(function(){
 });
 
 
+	// List of Mods.
+
+		// btnEnableMod click.
+		document.btnEnableMod_click = function(e) {
+
+			var mod_name;
+
+			mod_name = $(e.srcElement).parent().parent().find('td:first').html();
+
+			enable_mod(mod_name);
+
+			// Show info.
+			$('#divMask')
+				.fadeIn( 100 )
+				.delay( 3000 )
+				.fadeOut( 100, function() {
+					$('#divMask label.message').html( '' );
+					$('#divMask label.message').css({
+						color: 'black',
+						'font-weight': 'normal'
+					});
+				})
+			;
+
+			refresh_mods_list();
+
+		}// END OF btnEnableMod click.
+
 
 // FUNCTIONS
 
@@ -384,7 +412,7 @@ function refresh_mods_list() {
 				'<tr>' +
 					'<td>' + mod_name + '</td>' +
 					'<td>' +
-						'<button id="btnEnableMod" class="blue' + btnEnableMod_disabled + '">' +
+						'<button id="btnEnableMod" class="blue' + btnEnableMod_disabled + '" onclick="document.btnEnableMod_click( event );">' +
 							'' + $BTN_ENABLE[$iso_lang] + '' +
 						'</button>' +
 					'</td>' +
@@ -671,7 +699,7 @@ function enable_host(server_name) {
 
 	// Show command output in the console.
 	console.info(
-		'a2ensite: ' +	object_returned_data['command_output']['return']
+		'a2ensite: ' + object_returned_data['command_output']['return']
 	);
 	console.info(object_returned_data['command_output']['message']);
 
@@ -809,4 +837,78 @@ function disable_host(server_name) {
 	return host_disabled;
 
 }// END OF function disable_host(server_name).
+
+
+function enable_mod(mod_name) {
+
+	var mod_enabled = false, ajax_request, object_returned_data, message;
+
+	ajax_request = $.ajax({
+		url: 'php/ajax/enableMod.php',
+		type: 'POST',
+		async: false,
+		data: {
+			mod_name: mod_name
+		}
+	});// END OF $.ajax 'php/ajax/enableMod.php'.
+
+	// Decode JSON.
+	object_returned_data = eval( "(" + ajax_request.responseText + ")" );
+
+	// Show command output in the console.
+	console.info(
+		'a2enmod: ' + object_returned_data['command_output']['return']
+	);
+	console.info(object_returned_data['command_output']['message']);
+
+
+// STATIC TEXT.
+
+	message = object_returned_data['message'];
+
+	message = message.replace(
+		'MOD_NOT_ENABLED',
+		$MOD_NOT_ENABLED[$iso_lang]
+	);
+
+	message = message.replace(
+		'MOD_ENABLED',
+		$MOD_ENABLED[$iso_lang]
+	);
+
+
+// Host data needed.
+
+	message = message.replace(
+		'{{MOD_NAME}}',
+		mod_name
+	);
+
+
+// Style info.
+
+	if( object_returned_data['return'] ) {
+
+		$('#divMask label.message').css({
+			color: '#099',
+			'font-weight': 'bold'
+		});
+
+		mod_enabled = true;
+
+	} else {
+
+		$('#divMask label.message').css({
+			color: '#900',
+			'font-weight': 'bold'
+		});
+
+	}
+
+	$('#divMask label.message').html( message );
+
+
+	return mod_enabled;
+
+}// END OF function enable_mod(mod_name)
 
