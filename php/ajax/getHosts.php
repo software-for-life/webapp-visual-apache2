@@ -98,6 +98,10 @@
 	$dir_sites_available->close();
 
 
+	// Alphabetical order.
+	ksort( $hosts_list );
+
+
 // RETURN HOST_LIST.
 
 	echo json_encode( $hosts_list );

@@ -42,6 +42,8 @@
 	}
 	$lang_dir->close();
 
+	// Alphabetical order.
+	asort( $LANG );
 
 
 // DETECT USER LANG.
@@ -221,7 +223,7 @@
 		);
 
 
-	// Choose language menu (Languages available)
+	// The language choose menu (Languages available)
 
 		if( strpos( $file[$i], '{{LANGUAGES_AVAILABLE}}' ) !== false ) {
 

@@ -58,6 +58,10 @@
 	$dir_mods_available->close();
 
 
+	// Alphabetical order.
+	ksort( $mods_list );
+
+
 // RETURN MODS_LIST.
 
 	echo json_encode( $mods_list );
