@@ -101,7 +101,7 @@ $(document).ready(function(){
 			$('#txtDocumentRoot').val(
 				document.object_list_of_hosts[event.srcElement.innerHTML].document_root
 			);
-			if( document.object_list_of_hosts[event.srcElement.innerHTML].django_activated )
+			if( document.object_list_of_hosts[event.srcElement.innerHTML].wsgi_activated )
 				$('#btnEnableWSGI').click();
 			else
 				$('#btnDisableWSGI').click();

@@ -69,12 +69,12 @@
 			);
 
 
-		// GET Django state (Enable / Disable).
+		// GET WSGI directive state (Enable / Disable).
 
 			if( strpos( implode( $file ), "WSGIScriptAlias" ) !== false )
-				$hosts_list[$element]['django_activated'] = true;
+				$hosts_list[$element]['wsgi_activated'] = true;
 			else
-				$hosts_list[$element]['django_activated'] = false;
+				$hosts_list[$element]['wsgi_activated'] = false;
 
 
 		// GET host state (Enable / Disable).
