@@ -58,4 +58,6 @@ $HOST_ENABLED['en'] = 'Host {{SERVER_NAME}} enabled.';
 $HOST_DISABLED['en'] = 'Host {{SERVER_NAME}} disabled.';
 $MOD_NOT_ENABLED['en'] = 'Could not enable the {{MOD_NAME}} module.';
 $MOD_ENABLED['en'] = 'Module {{MOD_NAME}} enabled.';
+$MOD_NOT_DISABLED['en'] = 'Could not disable the {{MOD_NAME}} module.';
+$MOD_DISABLED['en'] = 'Module {{MOD_NAME}} disabled.';
 ?>

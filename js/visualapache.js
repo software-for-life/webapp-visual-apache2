@@ -322,6 +322,32 @@ $(document).ready(function(){
 
 		}// END OF btnEnableMod click.
 
+		// btnDisableMod click.
+		document.btnDisableMod_click = function(e) {
+
+			var mod_name;
+
+			mod_name = $(e.srcElement).parent().parent().find('td:first').html();
+
+			disable_mod(mod_name);
+
+			// Show info.
+			$('#divMask')
+				.fadeIn( 100 )
+				.delay( 3000 )
+				.fadeOut( 100, function() {
+					$('#divMask label.message').html( '' );
+					$('#divMask label.message').css({
+						color: 'black',
+						'font-weight': 'normal'
+					});
+				})
+			;
+
+			refresh_mods_list();
+
+		}// END OF btnDisableMod click.
+
 
 // FUNCTIONS
 
@@ -417,7 +443,7 @@ function refresh_mods_list() {
 						'</button>' +
 					'</td>' +
 					'<td>' +
-						'<button id="btnDisableMod" class="red' + btnDisableMod_disabled + '">' +
+						'<button id="btnDisableMod" class="red' + btnDisableMod_disabled + '" onclick="document.btnDisableMod_click( event );">' +
 							'' + $BTN_DISABLE[$iso_lang] + '' +
 						'</button>' +
 					'</td>' +
@@ -909,6 +935,80 @@ function enable_mod(mod_name) {
 
 
 	return mod_enabled;
+
+}// END OF function enable_mod(mod_name)
+
+
+function disable_mod(mod_name) {
+
+	var mod_disabled = false, ajax_request, object_returned_data, message;
+
+	ajax_request = $.ajax({
+		url: 'php/ajax/disableMod.php',
+		type: 'POST',
+		async: false,
+		data: {
+			mod_name: mod_name
+		}
+	});// END OF $.ajax 'php/ajax/disableMod.php'.
+
+	// Decode JSON.
+	object_returned_data = eval( "(" + ajax_request.responseText + ")" );
+
+	// Show command output in the console.
+	console.info(
+		'a2dismod: ' + object_returned_data['command_output']['return']
+	);
+	console.info(object_returned_data['command_output']['message']);
+
+
+// STATIC TEXT.
+
+	message = object_returned_data['message'];
+
+	message = message.replace(
+		'MOD_NOT_DISABLED',
+		$MOD_NOT_DISABLED[$iso_lang]
+	);
+
+	message = message.replace(
+		'MOD_DISABLED',
+		$MOD_DISABLED[$iso_lang]
+	);
+
+
+// Host data needed.
+
+	message = message.replace(
+		'{{MOD_NAME}}',
+		mod_name
+	);
+
+
+// Style info.
+
+	if( object_returned_data['return'] ) {
+
+		$('#divMask label.message').css({
+			color: '#099',
+			'font-weight': 'bold'
+		});
+
+		mod_disabled = true;
+
+	} else {
+
+		$('#divMask label.message').css({
+			color: '#900',
+			'font-weight': 'bold'
+		});
+
+	}
+
+	$('#divMask label.message').html( message );
+
+
+	return mod_disabled;
 
 }// END OF function enable_mod(mod_name)
 
