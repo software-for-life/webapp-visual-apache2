@@ -1,0 +1,12 @@
+/* TEAM */
+	Developer: Sergio Lindo
+	Contact: sergiolindo.empresa [at] gmail.com
+	Github: github.com/binary-sequence/
+	Twitter: @binary_sequence
+	From: Córdoba, Andalusia, Spain
+
+/* SITE */
+	Last update:2013/02/13
+	Language:English / Castellano
+	Doctype:HTML5
+	IDE: gedit, Gimp

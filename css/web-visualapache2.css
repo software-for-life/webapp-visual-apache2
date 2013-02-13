@@ -1,0 +1,55 @@
+* {
+	color: white;
+	cursor: default;
+}
+
+
+body {
+	background-color: #003050;
+}
+
+
+header #aLogo img {
+	height:60px;
+	padding:9px;
+	/*width:auto;*/
+}
+
+
+#navMenu {
+	background: rgba(0,0,0, .5);
+	border-top: .13em solid white;
+	border-bottom: .13em solid white;
+	box-shadow: 1em 1em 3em black;
+	margin: .1em 0;
+	padding: .1em 1.2em;
+}
+#navMenu a {
+	text-decoration: none;
+	margin:0 8.5%;
+}
+#navMenu a:hover {
+	text-decoration: underline;
+}
+
+
+#sectionContent {
+	background-image: linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
+	background-image: -moz-linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
+	background-image: -ms-linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(0,80,112)), color-stop(0.37, rgb(0,0,0)), color-stop(0.8, rgb(0,96,128)));
+	background-image: -webkit-linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
+	background-image: -o-linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
+	box-shadow: 1em 1em 3em black;
+	padding: .1em 1.2em;
+}
+
+
+#footerBody {
+	background: rgba(0,0,0, .5);
+	border-top: .13em solid white;
+	border-bottom: .13em solid white;
+	margin: .1em 0;
+	padding: .1em 1.2em;
+}
+
