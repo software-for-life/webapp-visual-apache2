@@ -41,7 +41,19 @@ header #aLogo img {
 	background-image: -webkit-linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
 	background-image: -o-linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
 	box-shadow: 1em 1em 3em black;
-	padding: .1em 1.2em;
+	padding: .5em 1.2em;
+	text-shadow: 1em 1em 1em black;
+}
+#sectionContent header {
+	font-weight:bold;
+}
+#sectionContent div {
+	background: rgba(0,255,255, .1);
+	box-shadow: 1em 1em 3em black;
+	margin: .5em 0;
+}
+#sectionContent footer {
+	font-style:italic;
 }
 
 
