@@ -21,7 +21,7 @@ You should have received a copy of the GNU General Public License along with
 
 ### Screenshoot
 
-<img style="border:0px;" src="https://lh5.googleusercontent.com/-mxuF31Pdq6o/UMI7Kyd3-VI/AAAAAAAACM0/vqP5wrKDZqo/s640/webapp-visual-apache2.jpg">
+<img style="border:0px;" src="https://raw.github.com/binary-sequence/webapp-visual-apache2/master/img/screenshot_hostslist-1.0.jpg">
 
 ### Understanding
 
