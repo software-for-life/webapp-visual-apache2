@@ -63,18 +63,15 @@ nav.menuBar {
 	margin:.1em;
 	padding:.1em 1.2em;
 }
-
 nav.menuBar a {
 	display:inline-block;
 	margin:0.2em;
 	text-align:center;
 	text-decoration:none;
 }
-
 nav.menuBar a * {
 	display:block;
 }
-
 nav.menuBar a img {
 	height:44px;
 	margin: auto;
@@ -84,17 +81,14 @@ nav.menuBar a img {
 	-webkit-transition:background 1s;
 	width:44px;
 }
-
 nav.menuBar a:hover img {
 	background:rgba(255,255,255,.5);
 }
 
 
-
 /* ==========================================================================
 	Box model
    ========================================================================== */
-
 section.boxModel {
 	background-image: linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
 	background-image: -moz-linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
@@ -109,14 +103,12 @@ section.boxModel {
 	margin:.1em;
 	padding:.1em 1.2em;
 }
-
 section.boxModel table {
 	background:rgba(0,255,255, .1);
 	border-collapse:collapse;
 	box-shadow:1em 1em 3em black;
 	margin-bottom:.3em;
 }
-
 section.boxModel th, section.boxModel td {
 	margin-bottom:1em;
 	padding:0px 0.5em;
@@ -124,16 +116,13 @@ section.boxModel th, section.boxModel td {
 }
 
 
-
 /* ==========================================================================
 	Buttons
    ========================================================================== */
-
 button.disabled {
 	opacity:0.4;
 	filter:alpha(opacity=40); /* For IE8 and earlier */
 }
-
 button.blue, button.red, button.green {
 	border: 1px solid gainsboro;
 	border-radius: 2px;
@@ -144,7 +133,6 @@ button.blue, button.red, button.green {
 	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 	padding: .2em .4em;
 }
-
 button.blue {
 	background-color: #4D90FE;
 	background-image: linear-gradient(top,#4D90FE,#4787ED);
@@ -156,7 +144,6 @@ button.blue {
 	border: 1px solid #3079ED;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
 }
-
 button.blue:hover {
 	background-color: #357AE8;
 	background-image: linear-gradient(top,#4D90FE,#357AE8);
@@ -168,7 +155,6 @@ button.blue:hover {
 	border: 1px solid #2F5BB7;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
 }
-
 button.red {
 	background-color: #D14836;
 	background-image: linear-gradient(top,#DD4B39,#D14836);
@@ -180,7 +166,6 @@ button.red {
 	border: 1px solid #C13826;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
 }
-
 button.red:hover {
 	background-color: #C13826;
 	background-image: linear-gradient(top,#DD4B39,#C13826);
@@ -192,7 +177,6 @@ button.red:hover {
 	border: 1px solid #B12816;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
 }
-
 button.green {
 	background-color: #00AE40;
 	background-image: linear-gradient(top,#0DBE50,#00AE40);
@@ -204,7 +188,6 @@ button.green {
 	border: 1px solid #007E10;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
 }
-
 button.green:hover {
 	background-color: #009E30;
 	background-image: linear-gradient(top,#0DBE50,#009E30);
@@ -218,40 +201,49 @@ button.green:hover {
 }
 
 
-
 /* ==========================================================================
-
 	Individual style
-
    ========================================================================== */
-
 #divLanguageBar {
 	background-color: black;
 	border: 1px solid white;
 	display: inline-block;
-	float: right;
 	margin: .1em .1em 0px 0px;
 	padding-left: .5em;
+	position: absolute;
+	right: 0;
+	top: 0;
 }
-
 #divLanguageBar a {
 	display: inline-block;
 	margin: .1em .5em .1em 0;
 	text-decoration: none;
 }
-
 #divLanguageBar a:hover {
 	text-decoration: underline;
 }
+
+
+#labelVisualApache2Version {
+	font-style: italic;
+	margin: .1em .5em;
+	padding: 3px 0;
+	position: absolute;
+	right:0;
+	top: 1.8em;
+}
+
 
 #tableNewHost th, #tableNewHost td {
 	padding:.4em .5em;
 	white-space: nowrap;
 }
 
+
 #btnDeleteHost {
 	display:none;
 }
+
 
 #divMask {
 	background-color:rgba(50, 50, 50, .5);
@@ -263,7 +255,6 @@ button.green:hover {
 	width:100%;
 	z-index:9900;
 }
-
 #divMask label.message {
 	background-color:#EFF;
 	border:1px solid black;
