@@ -1,8 +1,9 @@
 * {
 	color: white;
-	cursor: default;
 }
-
+* a:hover {
+	color:#ccc;
+}
 
 body {
 	background-color: #003050;
@@ -25,8 +26,9 @@ header #aLogo img {
 	padding: .1em 1.2em;
 }
 #navMenu a {
-	text-decoration: none;
+	cursor: default;
 	margin:0 8.5%;
+	text-decoration: none;
 }
 #navMenu a:hover {
 	text-decoration: underline;
