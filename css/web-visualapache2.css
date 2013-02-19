@@ -1,5 +1,6 @@
 * {
 	color: white;
+	font-family: serif;
 }
 * a:hover {
 	color:#ccc;
@@ -44,7 +45,6 @@ section.content {
 	background-image: -o-linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
 	box-shadow: 1em 1em 3em black;
 	padding: .5em 1.2em;
-	text-shadow: 1em 1em 1em black;
 }
 section.content header {
 	font-weight:bold;
@@ -53,6 +53,8 @@ section.content div {
 	background: rgba(0,255,255, .1);
 	box-shadow: 1em 1em 3em black;
 	margin: .5em 0;
+	padding: .1em 1em;
+	text-shadow: 1em 1em 1em black;
 }
 section.content footer {
 	font-style:italic;
