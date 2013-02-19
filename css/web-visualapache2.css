@@ -35,7 +35,7 @@ header #aLogo img {
 }
 
 
-#sectionContent {
+section.content {
 	background-image: linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
 	background-image: -moz-linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
 	background-image: -ms-linear-gradient(bottom, rgb(0,80,112) 0%, rgb(0,0,0) 37%, rgb(0,96,128) 80%);
@@ -46,15 +46,15 @@ header #aLogo img {
 	padding: .5em 1.2em;
 	text-shadow: 1em 1em 1em black;
 }
-#sectionContent header {
+section.content header {
 	font-weight:bold;
 }
-#sectionContent div {
+section.content div {
 	background: rgba(0,255,255, .1);
 	box-shadow: 1em 1em 3em black;
 	margin: .5em 0;
 }
-#sectionContent footer {
+section.content footer {
 	font-style:italic;
 }
 
