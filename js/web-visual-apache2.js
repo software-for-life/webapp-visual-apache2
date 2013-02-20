@@ -38,8 +38,31 @@ $(document).ready(function() {
 		);
 
 	});
-
 	$('#aInstallIt').click(function(e) {
+
+		e.preventDefault();
+
+		window.scrollTo(0,0);
+
+	});
+
+
+	$('#aUserManual, #aUseIt').click(function(e) {
+
+		e.preventDefault();
+
+		$('#sectionHome, #sectionInstall, #sectionContribute').fadeOut(
+			0,
+			function() {
+
+				$('#sectionUserManual').fadeIn(0);
+
+			}
+
+		);
+
+	});
+	$('#aUseit').click(function(e) {
 
 		e.preventDefault();
 
