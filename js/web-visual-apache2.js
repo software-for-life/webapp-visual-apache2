@@ -70,5 +70,28 @@ $(document).ready(function() {
 
 	});
 
+	$('#aContribute, #aContributeToIt').click(function(e) {
+
+		e.preventDefault();
+
+		$('#sectionHome, #sectionInstall, #sectionUserManual').fadeOut(
+			0,
+			function() {
+
+				$('#sectionContribute').fadeIn(0);
+
+			}
+
+		);
+
+	});
+	$('#aContributeToIt').click(function(e) {
+
+		e.preventDefault();
+
+		window.scrollTo(0,0);
+
+	});
+
 });
 
