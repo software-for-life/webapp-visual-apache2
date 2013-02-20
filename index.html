@@ -52,13 +52,12 @@
 				apache2 server and php. The client (it could be server itself or
 				other computer in the network) needs to support html5.<br />
 				<ul>
-					<li><a id="aInstallIt" href="install">Install it</a></li>
-					<li><a id="aUseIt" href="user_manual">Use it</a></li>
-					<li><a id="aContributeToIt" href="contribute">
-						Contribute to it
-					</a></li>
-					</ul>
-				</p>
+					<li><a id="aInstallIt" class="link" href="install">Install
+						it</a></li>
+					<li><a id="aUseIt" class="link" href="user_manual">Use it
+						</a></li>
+					<li><a id="aContributeToIt" class="link" href="contribute">
+						Contribute to it</a></li></ul></p>
 			</div>
 		<footer>Last version: Visual apache2 1.0</footer>
 	</section>
@@ -69,11 +68,10 @@
 			<p> Visual apache2 is a web application that runs on php5 +
 				JavaScript + html5.</p>
 			<h1>Before installing Visual apache2</h1>
-			<p> To use Visual apache2, you need to install apache2, php5 and
-				libapache2-mod-php5. And you need a web browser that supports
-				JavaScript + html5.</p>
-			<h1>Installing apache2 and php5 with apt-get:</h1>
-			<p> Execute this command:
+			<p> To use Visual apache2, you need to have installed apache2, php5
+				and libapache2-mod-php5. You also need a web browser that
+				supports JavaScript and html5.<br />
+				Example of installation using apt-get:
 				<code><span class="command">apt-get</span> <span
 					class="options">install</span> <span class="parameters">
 					apache2 php5 libapache2-mod-php5</code>
@@ -81,9 +79,9 @@
 			<h1>Installing Visual apache2</h1>
 			<ol>
 				<li>Download the installer:<br />
-					<h2>1.0</h2>
 					<ul>
-						<li><a href="downloads/install_visual-apache2-1.0_apt-get.sh">
+						<li><a class="link"
+							href="downloads/install_visual-apache2-1.0_apt-get.sh">
 								install_visual-apache2-1.0_apt-get.sh
 							</a>
 						</li>
@@ -124,6 +122,7 @@
 						/etc/apache2/sites-enabled/ /etc/apache2/mods-enabled/
 						</span></code></li>
 				<li>Create virtualhost for Visual apache2:<br />
+					Content of
 					<strong>/etc/apache2/sites-available/visual-apache2-1.0
 						</strong>
 					<pre>
@@ -145,8 +144,8 @@
 					<code><span class="command">mkdir</span> <span
 						class="options">-p</span> <span class="parameters">
 						/var/www/visual-apache2-1.0/logs</span></code></li>
-				<li>Add port 8000 to /etc/apache2/ports.conf:
-					Example:
+				<li>Add port 8000 to /etc/apache2/ports.conf:<br />
+					Example of <strong>/etc/apache2/ports.conf:</strong>
 					<pre>
 # If you just change the port or add more ports here, you will likely also
 # have to change the VirtualHost statement in
@@ -156,7 +155,7 @@
 # README.Debian.gz
 
 NameVirtualHost *:80
-<strong>Listen 8000</strong>
+Listen 8000 # visual-apache2.net:8000
 Listen 80
 
 &lt;IfModule mod_ssl.c&gt;
@@ -188,8 +187,8 @@ Listen 80
 						<span class="command">rm</span>
 						<span class="parameters">visual-apache2-1.0.tar.gz
 						</span></code></li>
-				<li>Add host visual-apache2.net on /etc/hosts:<br />
-					Example:
+				<li>Add 'visual-apache2.net' host on /etc/hosts:<br />
+					Example of <strong>/etc/hosts:</strong>
 					<pre>
 127.0.0.1	localhost
 127.0.0.1	visual-apache2.net

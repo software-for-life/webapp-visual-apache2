@@ -5,6 +5,10 @@
 * a:hover {
 	color:#ccc;
 }
+* a.link {
+	color: #7bf;
+}
+
 
 body {
 	background-color: #003050;
@@ -87,13 +91,9 @@ section.content div {
 	text-shadow: 1em 1em 1em black;
 }
 section.content div h1 {
+	border-bottom: 1px solid white;
 	font-size: 1.2em;
 	margin: 1.5em 0 0 0;
-	text-decoration: underline;
-}
-section.content div h2 {
-	font-size: 1em;
-	margin: .1em 0 0 0;
 }
 section.content div p, section.content div ol, section.content div ul,
 section.content div pre, section.content div li {
