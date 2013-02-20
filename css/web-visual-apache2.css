@@ -25,6 +25,18 @@ code {
 	font-family: menlo, monospace;
 	padding: 5px 15px;
 }
+code span.command {
+	color: #aaa;
+	font: inherit;
+}
+code span.options {
+	color: #db0;
+	font: inherit;
+}
+code span.parameters {
+	color: white;
+	font: inherit;
+}
 
 
 pre {

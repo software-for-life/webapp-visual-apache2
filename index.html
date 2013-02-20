@@ -74,7 +74,9 @@
 				JavaScript + html5.</p>
 			<h1>Installing apache2 and php5 with apt-get:</h1>
 			<p> Execute this command:
-				<code>apt-get install apache2 php5 libapache2-mod-php5</code>
+				<code><span class="command">apt-get</span> <span
+					class="options">install</span> <span class="parameters">
+					apache2 php5 libapache2-mod-php5</code>
 				(Remember to execute this command with root privileges)</p>
 			<h1>Installing Visual apache2</h1>
 			<ol>
@@ -90,7 +92,9 @@
 				<li>Execute the installer:<br />
 					The installer should be executed with root privileges.<br />
 					Example with the ubuntu terminal:
-					<code>sudo bash install_visual-apache2-1.0_apt-get.sh</code>
+					<code>sudo <span class="command">bash</span>
+						<span class="parameters">
+						install_visual-apache2-1.0_apt-get.sh</span></code>
 					(Remember to add the path if you are not in its directory)
 				</li>
 			</ol>
@@ -99,20 +103,26 @@
 				privileges)</p>
 			<ol>
 				<li>Make a backup of ports.conf:
-					<code>cp /etc/apache2/ports.conf
-					/etc/apache2/ports.conf.backup</code>
+					<code><span class="command">cp</span> <span
+						class="parameters">/etc/apache2/ports.conf
+						/etc/apache2/ports.conf.backup</span></code>
 					</li>
 				<li>Change the owner to www-data of the files used by Visual
 					apache2:
-					<code>chown www-data /etc/apache2/ports.conf
-					/etc/apache2/ports.conf.backup /etc/apache2/sites-available/
-					/etc/apache2/sites-enabled/ /etc/apache2/mods-enabled/
-					</code></li>
+					<code><span class="command">chown</span> <span
+						class="options">www-data</span> <span
+						class="parameters">/etc/apache2/ports.conf
+						/etc/apache2/ports.conf.backup
+						/etc/apache2/sites-available/
+						/etc/apache2/sites-enabled/ /etc/apache2/mods-enabled/
+						</span></code></li>
 				<li>Change the access to the files used by Visual apache2:
-					<code>chmod u+rw /etc/apache2/ports.conf
-					/etc/apache2/ports.conf.backup /etc/apache2/sites-available/
-					/etc/apache2/sites-enabled/ /etc/apache2/mods-enabled/
-					</code></li>
+					<code><span class="command">chmod</span> <span
+						class="options">u+rw</span> <span class="parameters">
+						/etc/apache2/ports.conf /etc/apache2/ports.conf.backup
+						/etc/apache2/sites-available/
+						/etc/apache2/sites-enabled/ /etc/apache2/mods-enabled/
+						</span></code></li>
 				<li>Create virtualhost for Visual apache2:<br />
 					<strong>/etc/apache2/sites-available/visual-apache2-1.0
 						</strong>
@@ -132,7 +142,9 @@
 	CustomLog /var/www/visual-apache2-1.0/logs/access.log combined
 &lt;/VirtualHost&gt;</pre></li>
 				<li>Create DocumentRoot of Visual apache2:
-					<code>mkdir -p /var/www/visual-apache2-1.0/logs</code></li>
+					<code><span class="command">mkdir</span> <span
+						class="options">-p</span> <span class="parameters">
+						/var/www/visual-apache2-1.0/logs</span></code></li>
 				<li>Add port 8000 to /etc/apache2/ports.conf:
 					Example:
 					<pre>
@@ -160,11 +172,22 @@ Listen 80
     Listen 443
 &lt;/IfModule&gt;</pre></li>
 				<li>Enable virtual host:
-					<code>/usr/sbin/a2ensite visual-apache2-1.0</code></li>
+					<code><span class="command">/usr/sbin/a2ensite</span>
+						<span class="parameters">visual-apache2-1.0</span></code>
+						</li>
 				<li>Download and extract Visual apache2:
-					<code>wget http://binary-sequence.github.com/webapp-visual-apache2/downloads/visual-apache2-1.0.tar.gz<br />
-					tar -xzf visual-apache2-1.0.tar.gz -C /var/www/visual-apache2-1.0/<br />
-					rm visual-apache2-1.0.tar.gz</code></li>
+					<code><span class="command">wget</span> <span
+						class="parameters">
+						http://binary-sequence.github.com/webapp-visual-apache2/downloads/visual-apache2-1.0.tar.gz
+						</span><br />
+						<span class="command">tar</span> <span class="options">
+						-xzf</span> <span class="parameters">
+						visual-apache2-1.0.tar.gz</span> <span class="options">
+						-C</span> <span class="parameters">
+						/var/www/visual-apache2-1.0/</span><br />
+						<span class="command">rm</span>
+						<span class="parameters">visual-apache2-1.0.tar.gz
+						</span></code></li>
 				<li>Add host visual-apache2.net on /etc/hosts:<br />
 					Example:
 					<pre>
@@ -179,13 +202,16 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 					</pre></li>
 				<li>Restarting apache2 daemon:
-					<code>service apache2 restart</code>
-					</li>
+					<code><span class="command">service</span> <span
+						class="parameters">apache2</span> <span
+						class="options">restart</span></code></li>
 				<li>Use your html5 compatible browser:<br />
 					Example:
-					<code>google-chrome http://visual-apache2.net:8000</code>
+					<code><span class="command">google-chrome</span> <span
+						class="parameters">http://visual-apache2.net:8000</span>
+						</code>
 					<img src="img/screenshot_web-nav-bar.jpg"
-						style="border: 5px solid white; margin-top: 0em;" />
+						style="border: 5px solid white; margin-top: .5em;" />
 					</li>
 				</ol>
 			</div>
