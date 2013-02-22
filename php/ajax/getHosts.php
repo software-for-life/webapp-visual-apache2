@@ -31,8 +31,9 @@
 
 	while ( ($element = $dir_sites_available->read()) !== false ) {
 
-		if((preg_match('/.backup$/', $element) != 1
-		&& preg_match('/~$/', $element) != 1)
+		if(preg_match('/.backup$/', $element) != 1
+		&& preg_match('/~$/', $element) != 1
+		&& preg_match('/^visual-apache2-[0-9].[0-9]/', $element) != 1
 		&& is_file( '/etc/apache2/sites-available/'.$element ) ) {
 
 			// ServerName.
