@@ -21,7 +21,7 @@ You should have received a copy of the GNU General Public License along with
 
 ### Screenshoot
 
-<img style="border:0px;" src="https://binary-sequence.github.com/webapp-visual-apache2/img/screenshot_hostslist-1.0.jpg">
+<img style="border:0px;" src="http://binary-sequence.github.com/webapp-visual-apache2/img/screenshot_hostslist-1.0.jpg">
 
 ### Understanding
 
@@ -29,4 +29,4 @@ You should have received a copy of the GNU General Public License along with
 
 ### github web page
 
-If you want to install or see the manual, visit https://binary-sequence.github.com/webapp-visual-apache2/
+If you want to install or see the manual, visit http://binary-sequence.github.com/webapp-visual-apache2/
