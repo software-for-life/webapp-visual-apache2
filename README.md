@@ -21,33 +21,12 @@ You should have received a copy of the GNU General Public License along with
 
 ### Screenshoot
 
-<img style="border:0px;" src="https://raw.github.com/binary-sequence/webapp-visual-apache2/master/img/screenshot_hostslist-1.0.jpg">
+<img style="border:0px;" src="https://binary-sequence.github.com/webapp-visual-apache2/img/screenshot_hostslist-1.0.jpg">
 
 ### Understanding
 
-- [Documentation of analysis (Version 1.0)](https://docs.google.com/folder/d/0B8JxC44zJg_8dmZ2YWlvblM0Q0U/edit)
+- [Documentation and analysis (Version 1.0)](https://docs.google.com/folder/d/0B8JxC44zJg_8dmZ2YWlvblM0Q0U/edit)
 
-### Install and configure
+### github web page
 
-**Packages needed:**  
--Apache2 (Web server).  
--PHP (Programming language).  
--PHP module for Apache2 (Use PHP on server side).
-
-**Optional packages (if you want to code web apps in python):**  
--Python (Programming language).  
--WSGI module for Apache2 (Use Python on server side).  
-
-**Ubuntu:**
-
-    sudo apt-get install apache2
-    sudo apt-get install php5
-    sudo apt-get install libapache2-mod-php5
-    sudo apt-get install python
-    sudo apt-get install libapache2-mod-wsgi
-
-**Download or clone webapp-visual-apache2:**  
-TODO
-
-**Configure virtualhost for webapp-visual-apache2:**  
-TODO
+If you want to install or see the manual, visit https://binary-sequence.github.com/webapp-visual-apache2/
