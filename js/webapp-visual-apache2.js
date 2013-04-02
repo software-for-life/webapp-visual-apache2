@@ -360,7 +360,7 @@ function refresh_hosts_list() {
 
 	}).done(function( json_encoded_hosts_list ) {
 
-		var lines = '';
+		var lines = '', tableHostList = $('#tableHostList');
 
 		// Decode json.
 		document.object_list_of_hosts = eval( "(" + json_encoded_hosts_list + ")" );
@@ -383,7 +383,7 @@ function refresh_hosts_list() {
 			// Show html.
 			lines += '' +
 			'<tr>' +
-				'<td onclick="document.list_item_click( event );">' + host_name + '</td>' +
+				'<td class="list_item_click">' + host_name + '</td>' +
 				'<td style="text-align:right;">' + document.object_list_of_hosts[host_name].port + '</td>' +
 				'<td>' +
 					'<button id="btnEnableHost" class="blue' + btnEnableHost_disabled + '" onclick="document.btnEnableHost_click( event );">' +
@@ -399,7 +399,8 @@ function refresh_hosts_list() {
 
 		}// END OF for( var host_name in document.object_list_of_hosts )
 
-		$('#tableHostList').html( lines );
+		tableHostList.html( lines );
+		tableHostList.find('td.list_item_click').click(document.list_item_click);
 
 	});// END OF $.ajax php/ajax/getHosts.php
 
