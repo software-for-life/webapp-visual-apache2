@@ -18,11 +18,11 @@ else
 		/etc/apache2/mods-enabled/
 
 	echo "Deleting virtualhost for Visual apache2."
-	/usr/sbin/a2dissite visual-apache2-1.0
-	rm /etc/apache2/sites-available/visual-apache2-1.0
+	/usr/sbin/a2dissite visual-apache2-1.1
+	rm /etc/apache2/sites-available/visual-apache2-1.1
 
 	echo "Deleting DocumentRoot of Visual apache2."
-	rm -r /var/www/visual-apache2-1.0/
+	rm -r /var/www/visual-apache2-1.1/
 
 	echo "Removing port 8000."
 	sed -i -e '/^Listen 8000$/ d' /etc/apache2/ports.conf
