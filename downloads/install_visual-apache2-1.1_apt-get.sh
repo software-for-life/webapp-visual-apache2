@@ -35,37 +35,37 @@ if [ `whoami` == 'root' ] && [ -f /usr/sbin/apache2 ] \
 		/etc/apache2/mods-enabled/
 
 	echo "Creating virtualhost for Visual apache2."
-	file='/etc/apache2/sites-available/visual-apache2-1.0'
+	file='/etc/apache2/sites-available/visual-apache2-1.1'
 	echo "#Host added by Visual Apache." > $file
 	echo "<VirtualHost *:8000>" >> $file
 	echo "	ServerName visual-apache2.net" >> $file
 	echo "" >> $file
 	echo "	DirectoryIndex index.php" >> $file
-	echo "	DocumentRoot /var/www/visual-apache2-1.0" >> $file
+	echo "	DocumentRoot /var/www/visual-apache2-1.1" >> $file
 	echo "	<Directory />" >> $file
 	echo "		AllowOverride None" >> $file
 	echo "		Order allow,deny" >> $file
 	echo "		Allow from all" >> $file
 	echo "	</Directory>" >> $file
 	echo "" >> $file
-	echo "	ErrorLog /var/www/visual-apache2-1.0/logs/error.log" >> $file
-	echo "	CustomLog /var/www/visual-apache2-1.0/logs/access.log combined" >> $file
+	echo "	ErrorLog /var/www/visual-apache2-1.1/logs/error.log" >> $file
+	echo "	CustomLog /var/www/visual-apache2-1.1/logs/access.log combined" >> $file
 	echo "</VirtualHost>" >> $file
 
 	echo "Creating DocumentRoot of Visual apache2."
-	mkdir -p /var/www/visual-apache2-1.0/logs
+	mkdir -p /var/www/visual-apache2-1.1/logs
 
 	echo "Adding port 8000."
 	if [ `grep -c "^Listen 8000$" /etc/apache2/ports.conf` -eq 0 ]; then
 		sed -i -e 's/^Listen/Listen 8000\nListen/' /etc/apache2/ports.conf
 	fi
 
-	/usr/sbin/a2ensite visual-apache2-1.0
+	/usr/sbin/a2ensite visual-apache2-1.1
 
 	echo "Downloading Visual apache2 v1.1."
 	wget http://binary-sequence.github.com/webapp-visual-apache2/downloads/visual-apache2-1.1.tar.gz
-	tar -xzf visual-apache2-1.0.tar.gz -C /var/www/visual-apache2-1.0/
-	rm visual-apache2-1.0.tar.gz
+	tar -xzf visual-apache2-1.1.tar.gz -C /var/www/visual-apache2-1.1/
+	rm visual-apache2-1.1.tar.gz
 
 	echo "Adding host visual-apache2.net on /etc/hosts."
 	if [ -z `sed -n -e '/^127.0.0.1\tvisual-apache2.net$/ =' \
