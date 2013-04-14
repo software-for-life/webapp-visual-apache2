@@ -83,8 +83,7 @@ $(document).ready(function(){
 	// List of hosts.
 
 		// List item click.
-		document.list_item_click = function( event ) {
-
+		document.list_item_click = function(e) {
 		// Reuse new host section.
 
 			// Change new host section title.
@@ -93,15 +92,15 @@ $(document).ready(function(){
 			);
 
 			// Fill with host data.
-			$('#txtOldServerName').val( event.srcElement.innerHTML );
-			$('#txtServerName').val( event.srcElement.innerHTML );
+			$('#txtOldServerName').val( e.target.innerHTML );
+			$('#txtServerName').val( e.target.innerHTML );
 			$('#txtListen').val(
-				document.object_list_of_hosts[event.srcElement.innerHTML].port
+				document.object_list_of_hosts[e.target.innerHTML].port
 			);
 			$('#txtDocumentRoot').val(
-				document.object_list_of_hosts[event.srcElement.innerHTML].document_root
+				document.object_list_of_hosts[e.target.innerHTML].document_root
 			);
-			if( document.object_list_of_hosts[event.srcElement.innerHTML].wsgi_activated )
+			if( document.object_list_of_hosts[e.target.innerHTML].wsgi_activated )
 				$('#btnEnableWSGI').click();
 			else
 				$('#btnDisableWSGI').click();
