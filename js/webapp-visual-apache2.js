@@ -114,7 +114,7 @@ $(document).ready(function(){
 
 			var server_name;
 
-			server_name = $(e.srcElement).parent().parent().find('td:first').html();
+			server_name = $(e.target).parent().parent().find('td:first').html();
 
 			enable_host(server_name);
 
@@ -142,7 +142,7 @@ $(document).ready(function(){
 
 			var server_name;
 
-			server_name = $(e.srcElement).parent().parent().find('td:first').html();
+			server_name = $(e.target).parent().parent().find('td:first').html();
 
 			disable_host(server_name);
 
@@ -300,7 +300,7 @@ $(document).ready(function(){
 
 			var mod_name;
 
-			mod_name = $(e.srcElement).parent().parent().find('td:first').html();
+			mod_name = $(e.target).parent().parent().find('td:first').html();
 
 			enable_mod(mod_name);
 
@@ -326,7 +326,7 @@ $(document).ready(function(){
 
 			var mod_name;
 
-			mod_name = $(e.srcElement).parent().parent().find('td:first').html();
+			mod_name = $(e.target).parent().parent().find('td:first').html();
 
 			disable_mod(mod_name);
 
