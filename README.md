@@ -21,12 +21,8 @@ You should have received a copy of the GNU General Public License along with
 
 ### Screenshoot
 
-<img style="border:0px;" src="http://binary-sequence.github.com/webapp-visual-apache2/img/screenshot_hostslist-1.0.jpg">
-
-### Understanding
-
-- [Documentation and analysis (Version 1.0)](https://docs.google.com/folder/d/0B8JxC44zJg_8dmZ2YWlvblM0Q0U/edit)
+<img style="border:0px;" src="https://raw.githubusercontent.com/software-for-life/webapp-visual-apache2/gh-pages/img/screenshot_hostslist-1.0.jpg">
 
 ### github web page
 
-If you want to install or see the manual, visit http://binary-sequence.github.com/webapp-visual-apache2/
+If you want to install or see the manual, visit http://software-for-life.github.io/webapp-visual-apache2/
